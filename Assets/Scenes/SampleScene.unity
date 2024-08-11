@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 836295072}
+  Player: {fileID: 836295076}
   camera: {fileID: 519420028}
 --- !u!1 &836295072
 GameObject:
@@ -377,6 +378,7 @@ MonoBehaviour:
   director: {fileID: 166847001}
   space: 0
   button: 0
+  uplimit: 0
   Locate: 0000000000000000
 --- !u!1 &897814514
 GameObject:
@@ -464,6 +466,7 @@ MonoBehaviour:
   hint8: {fileID: 0}
   hint9: {fileID: 0}
   bomb: {fileID: 21300000, guid: 2045f5506e7725344a149c998a8110c2, type: 3}
+  n: {fileID: 21300000, guid: c5ba81b6fceee5b46ab2b764b7566f54, type: 3}
   destroycolumn: 0
   column: 0
   row: 0
