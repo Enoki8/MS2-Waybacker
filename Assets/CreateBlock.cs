@@ -15,6 +15,7 @@ public class CreateBlock : MonoBehaviour
     public Sprite hint8;
     public Sprite hint9;
     public Sprite bomb;
+    public Sprite n;
 
     List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
@@ -39,7 +40,10 @@ public class CreateBlock : MonoBehaviour
         //Debug.Log($"zokusei:{zokusei}");
         if (zokusei == 0)
         {
-            Destroy(Grid[column - destroycolumn][row]);
+            //Destroy(Grid[column - destroycolumn][row]);
+            SpriteRenderer sr;
+            sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+            sr.sprite = n;
         }
         else
         {

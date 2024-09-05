@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 836295072}
+  Player: {fileID: 836295076}
   camera: {fileID: 519420028}
 --- !u!1 &836295072
 GameObject:
@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 836295075}
   - component: {fileID: 836295074}
   - component: {fileID: 836295076}
+  - component: {fileID: 836295077}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -340,7 +341,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -377,7 +378,29 @@ MonoBehaviour:
   director: {fileID: 166847001}
   space: 0
   button: 0
+  uplimit: 0
   Locate: 0000000000000000
+--- !u!95 &836295077
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836295072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13f0cd15965210e4abf4e54790ea9798, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &897814514
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +487,7 @@ MonoBehaviour:
   hint8: {fileID: 0}
   hint9: {fileID: 0}
   bomb: {fileID: 21300000, guid: 2045f5506e7725344a149c998a8110c2, type: 3}
+  n: {fileID: 21300000, guid: c5ba81b6fceee5b46ab2b764b7566f54, type: 3}
   destroycolumn: 0
   column: 0
   row: 0
