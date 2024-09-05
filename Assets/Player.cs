@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = Vector2.zero;
+        transform.position = new Vector3(0, 0, -1);
         maxspace = 8;
         space = 0;
         button = 0;
@@ -27,10 +27,7 @@ public class Player : MonoBehaviour
         if (space == 0)
         {
             button = Wall(Pushed());
-            if (Input.GetMouseButtonDown(0))
-            {
-                Move();
-            }
+            Move();
 
         }
         if (space != 0)
