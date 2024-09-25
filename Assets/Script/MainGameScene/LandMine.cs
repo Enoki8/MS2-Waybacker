@@ -15,16 +15,16 @@ public class LandMine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        zokusei = BombGrid[bombcolumn][bombrow];
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        zokusei = BombGrid[bombcolumn][bombrow];
-    }
-    private void OnDestroy()
-    {
-        Ondestroyed.Invoke();
-    }
+    //void Update()
+    //{
+
+    //}
+    //private void OnDestroy()
+    //{
+    //    Ondestroyed.Invoke();
+    //}
 }

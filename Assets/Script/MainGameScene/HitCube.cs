@@ -16,26 +16,27 @@ public class HitCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-    private void AroundSand()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         bombcount = BombGrid[cubecolumn].Count;
         zokusei = BombGrid[cubecolumn][cuberow];
-        if (Input.GetKey(KeyCode.D))
-        {
-            Debug.Log(BombGrid[cubecolumn][cuberow]);
-            Destroy(this.gameObject);
-        }
     }
-    private void OnDestroy()
-    {
+    //private void AroundSand()
+    //{
 
-    }
+    //}
+
+    // Update is called once per frame
+    //void Update()
+    //{
+
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    Debug.Log(BombGrid[cubecolumn][cuberow]);
+        //    Destroy(this.gameObject);
+        //}
+
+    //}
+    //private void OnDestroy()
+    //{
+
+    //}
 }

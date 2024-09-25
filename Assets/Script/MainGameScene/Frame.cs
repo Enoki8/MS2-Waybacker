@@ -10,13 +10,13 @@ public class Frame : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.F))
-        {
-            var nowTime = Time.time;
-            var elapsedTime = nowTime - startTime;
-            Debug.Log($"fps: {Time.frameCount / elapsedTime}");
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.F))
+    //    {
+    //        var nowTime = Time.time;
+    //        var elapsedTime = nowTime - startTime;
+    //        Debug.Log($"fps: {Time.frameCount / elapsedTime}");
+    //    }
+    //}
 }
