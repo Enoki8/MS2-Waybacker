@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,31 +6,31 @@ using UnityEngine;
 public class AspectKeeper : MonoBehaviour
 {
     [SerializeField]
-    private Camera targetCamera; //‘ÎÛ‚Æ‚·‚éƒJƒƒ‰
+    private Camera targetCamera; //å¯¾è±¡ã¨ã™ã‚‹ã‚«ãƒ¡ãƒ©
 
     [SerializeField]
-    private Vector2 aspectVec; //–Ú“I‰ğ‘œ“x
+    private Vector2 aspectVec; //ç›®çš„è§£åƒåº¦
 
     void Update()
     {
-        var screenAspect = Screen.width / (float)Screen.height; //‰æ–Ê‚ÌƒAƒXƒyƒNƒg”ä
-        var targetAspect = aspectVec.x / aspectVec.y; //–Ú“I‚ÌƒAƒXƒyƒNƒg”ä
+        var screenAspect = Screen.width / (float)Screen.height; //ç”»é¢ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”
+        var targetAspect = aspectVec.x / aspectVec.y; //ç›®çš„ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”
 
-        var magRate = targetAspect / screenAspect; //–Ú“IƒAƒXƒyƒNƒg”ä‚É‚·‚é‚½‚ß‚Ì”{—¦
+        var magRate = targetAspect / screenAspect; //ç›®çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã«ã™ã‚‹ãŸã‚ã®å€ç‡
 
-        var viewportRect = new Rect(0, 0, 1, 1); //Viewport‰Šú’l‚ÅRect‚ğì¬
+        var viewportRect = new Rect(0, 0, 1, 1); //ViewportåˆæœŸå€¤ã§Rectã‚’ä½œæˆ
 
         if (magRate < 1)
         {
-            viewportRect.width = magRate; //g—p‚·‚é‰¡•‚ğ•ÏX
-            viewportRect.x = 0.5f - viewportRect.width * 0.5f;//’†‰›Šñ‚¹
+            viewportRect.width = magRate; //ä½¿ç”¨ã™ã‚‹æ¨ªå¹…ã‚’å¤‰æ›´
+            viewportRect.x = 0.5f - viewportRect.width * 0.5f;//ä¸­å¤®å¯„ã›
         }
         else
         {
-            viewportRect.height = 1 / magRate; //g—p‚·‚éc•‚ğ•ÏX
-            viewportRect.y = 0.5f - viewportRect.height * 0.5f;//’†‰›—]¶
+            viewportRect.height = 1 / magRate; //ä½¿ç”¨ã™ã‚‹ç¸¦å¹…ã‚’å¤‰æ›´
+            viewportRect.y = 0.5f - viewportRect.height * 0.5f;//ä¸­å¤®ä½™ç”Ÿ
         }
 
-        targetCamera.rect = viewportRect; //ƒJƒƒ‰‚ÌViewport‚É“K—p
+        targetCamera.rect = viewportRect; //ã‚«ãƒ¡ãƒ©ã®Viewportã«é©ç”¨
     }
 }

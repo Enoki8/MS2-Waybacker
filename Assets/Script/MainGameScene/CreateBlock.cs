@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
@@ -31,7 +31,7 @@ public class CreateBlock : MonoBehaviour
 
     //    Debug.Log($"gridcount:{Grid.Count} bombgrid:{BombGrid.Count}");
     //}
-    public void Destroyblock(int column, int row)//ƒuƒƒbƒN‰ó‚·
+    public void Destroyblock(int column, int row)//ãƒ–ãƒ­ãƒƒã‚¯å£Šã™
     {
         int zokusei = BombGrid[column][row];
         //Debug.Log($"zokusei:{zokusei}");
@@ -44,7 +44,7 @@ public class CreateBlock : MonoBehaviour
         }
         else
         {
-            //Debug.Log("‰æ‘œ•ÏX");
+            //Debug.Log("ç”»åƒå¤‰æ›´");
             SpriteRenderer sr;
             sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
             switch (zokusei)
@@ -95,7 +95,7 @@ public class CreateBlock : MonoBehaviour
     }
 
 
-    public void Createrow()//ƒuƒƒbƒNì‚é
+    public void Createrow()//ãƒ–ãƒ­ãƒƒã‚¯ä½œã‚‹
     {
         List<GameObject> Row = new List<GameObject>();
         List<int> BombRow = new List<int>();
@@ -156,27 +156,27 @@ public class CreateBlock : MonoBehaviour
 
     private void AroundSand(int column, int row)
     {
-        //Debug.Log($"’n—‹ˆ—@column:{column} row:{row}");
+        //Debug.Log($"åœ°é›·å‡¦ç†ã€€column:{column} row:{row}");
         for (int j = -1; j <= 1; j++)
         {
             for (int i = -1; i <= 1; i++)
             {
                 if (row + j == -1 || row + j == 10)
                 {
-                    //Debug.Log("”ÍˆÍŠO‚Ì‚½‚ßƒpƒX");
+                    //Debug.Log("ç¯„å›²å¤–ã®ãŸã‚ãƒ‘ã‚¹");
                     continue;
                 }
                 else
                 {
                     if (j == 0 && i == 0 || BombGrid[column + i][row + j] == -1)
                     {
-                        //Debug.Log("’n—‹E©g‚Ì‚½‚ßƒpƒX");
+                        //Debug.Log("åœ°é›·ãƒ»è‡ªèº«ã®ãŸã‚ãƒ‘ã‚¹");
                         continue;
                     }
                     else
                     {
                         BombGrid[column + i][row + j]++;
-                        //Debug.Log($"column:{column + i} row:{row + j} ‚É’Ç‰Á");
+                        //Debug.Log($"column:{column + i} row:{row + j} ã«è¿½åŠ ");
                     }
                 }
             }

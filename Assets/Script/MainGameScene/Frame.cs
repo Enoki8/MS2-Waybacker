@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Frame : MonoBehaviour
 {
-    private float startTime; // ŠJŽnŽžŠÔ
+    private float startTime; // é–‹å§‹æ™‚é–“
 
     void Start()
     {
