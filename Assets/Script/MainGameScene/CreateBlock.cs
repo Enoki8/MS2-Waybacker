@@ -10,10 +10,6 @@ public class CreateBlock : MonoBehaviour
     public Sprite hint3;
     public Sprite hint4;
     public Sprite hint5;
-    public Sprite hint6;
-    public Sprite hint7;
-    public Sprite hint8;
-    public Sprite hint9;
     public Sprite bomb;
     public Sprite n;
 
@@ -66,6 +62,14 @@ public class CreateBlock : MonoBehaviour
             if (zokusei == 3)
             {
                 sr.sprite = hint3;
+            }
+            if (zokusei == 4)
+            {
+                sr.sprite = hint4;
+            }
+            if (zokusei == 5)
+            {
+                sr.sprite = hint5;
             }
         }
 
