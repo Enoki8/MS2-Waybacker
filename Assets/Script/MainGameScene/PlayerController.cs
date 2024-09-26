@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] CreateBlock createblock;
     [SerializeField] Director director;
+    [SerializeField] ScoreManager scoreManager;
+    [SerializeField] TimeManager timeManager;
 
     private int maxspace;
     [SerializeField] int space;

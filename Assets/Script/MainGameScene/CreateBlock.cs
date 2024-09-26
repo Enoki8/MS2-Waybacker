@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
+    [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameObject sand;
     [SerializeField] GameObject mine;
     [SerializeField] PlayerController player;
@@ -25,11 +26,11 @@ public class CreateBlock : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-        //Debug.Log($"gridcount:{Grid.Count} bombgrid:{BombGrid.Count}");
-    }
+    //    Debug.Log($"gridcount:{Grid.Count} bombgrid:{BombGrid.Count}");
+    //}
     public void Destroyblock(int column, int row)//ÉuÉçÉbÉNâÛÇ∑
     {
         int zokusei = BombGrid[column][row];
@@ -54,18 +55,23 @@ public class CreateBlock : MonoBehaviour
                 break;
                 case 1:
                     sr.sprite = hint1;
+                    scoreManager.ScoreUp(100);
                 break;
                 case 2:
                     sr.sprite = hint2;
+                    scoreManager.ScoreUp(200);
                 break;
                 case 3:
                     sr.sprite = hint3;
+                    scoreManager.ScoreUp(300);
                 break;
                 case 4:
                     sr.sprite = hint4;
+                    scoreManager.ScoreUp(400);
                 break;
                 case 5:
                     sr.sprite = hint5;
+                    scoreManager.ScoreUp(500);
                 break;
             }
         }
@@ -145,6 +151,7 @@ public class CreateBlock : MonoBehaviour
         }
 
         column++;
+        scoreManager.MaterUp();
     }
 
     private void AroundSand(int column, int row)
