@@ -46,30 +46,27 @@ public class CreateBlock : MonoBehaviour
             //Debug.Log("âÊëúïœçX");
             SpriteRenderer sr;
             sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-            if (zokusei == -1)
+            switch (zokusei)
             {
-                sr.sprite = bomb;
-                Debug.Log("GameOver!!");
-            }
-            if (zokusei == 1)
-            {
-                sr.sprite = hint1;
-            }
-            if (zokusei == 2)
-            {
-                sr.sprite = hint2;
-            }
-            if (zokusei == 3)
-            {
-                sr.sprite = hint3;
-            }
-            if (zokusei == 4)
-            {
-                sr.sprite = hint4;
-            }
-            if (zokusei == 5)
-            {
-                sr.sprite = hint5;
+                case -1:
+                    sr.sprite = bomb;
+                    Debug.Log("GameOver!!");
+                break;
+                case 1:
+                    sr.sprite = hint1;
+                break;
+                case 2:
+                    sr.sprite = hint2;
+                break;
+                case 3:
+                    sr.sprite = hint3;
+                break;
+                case 4:
+                    sr.sprite = hint4;
+                break;
+                case 5:
+                    sr.sprite = hint5;
+                break;
             }
         }
 
