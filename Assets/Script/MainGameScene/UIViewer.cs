@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class UIViewer : MonoBehaviour
 {
-    public float GameTimer;
+    [SerializeField] ScoreManager scoreManager;
+    [SerializeField] TimeManager timeManager;
     // Start is called before the first frame update
     void Start()
     {

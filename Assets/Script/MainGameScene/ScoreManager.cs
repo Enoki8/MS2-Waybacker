@@ -12,10 +12,10 @@ public class ScoreManager : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
         
-    }
+    //}
     public void ScoreUp(int score)
     {
         GameScore += score;
