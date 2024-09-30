@@ -6,6 +6,7 @@ public class CreateBlock : MonoBehaviour
     [SerializeField] GameObject sand;
     [SerializeField] GameObject mine;
     [SerializeField] PlayerController player;
+    [SerializeField] GameObject blocksclone;
     public Sprite hint1;
     public Sprite hint2;
     public Sprite hint3;
@@ -127,6 +128,7 @@ public class CreateBlock : MonoBehaviour
                 hitcube.BombGrid = BombGrid;
             }
             Row.Add(block);
+            block.transform.parent=blocksclone.transform;
             BombRow.Add(0);
         }
         Grid.Add(Row);
@@ -151,7 +153,7 @@ public class CreateBlock : MonoBehaviour
         }
 
         column++;
-        scoreManager.MaterUp();
+        //scoreManager.MaterUp();
     }
 
     private void AroundSand(int column, int row)

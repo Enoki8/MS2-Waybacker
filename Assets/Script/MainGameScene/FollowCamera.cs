@@ -30,11 +30,7 @@ public class FollowCamera : MonoBehaviour
     {
         aftercamera=(transform.position - beforecamera);
         {
-            //for (int i = 0; i < scoreManager.NumList.Count; i++)
-            //{
-            //    scoreManager.transform += aftercamera;
-            //}
-            scoreManager.ScoreCamera(aftercamera);
+            scoreManager.UICamera(aftercamera);
         }
     }
 }

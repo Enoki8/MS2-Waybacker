@@ -7,15 +7,14 @@ public class ScoreManager : MonoBehaviour
     public int GameMater;
     [SerializeField] List<Sprite> NumSpriteList;
     public List<GameObject> NumList;
+    [SerializeField] GameObject SCORE;
+    private List<GameObject> UIScrollList;//スクロールさせるUIはここにぶち込む
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log(NumSpriteList.Count);
-
-        for (int i = 0; i < NumList.Count; i++)
-        {
-            NumList[i].transform.position = new Vector3(11+(0.35f*i), 3, -100);
-        }
+        UIScrollList = new List<GameObject>();
+        SetStartSprict();
     }
     // Update is called once per frame
     //void Update()
@@ -35,25 +34,42 @@ public class ScoreManager : MonoBehaviour
         //ScoreReview();
     }
 
+
+    private void SetStartSprict()
+    {
+        //数字
+        for (int i = 0; i < NumList.Count; i++)
+        {
+            NumList[i].transform.position = new Vector3(-0.5f + (0.5f * i), 5, -100);//座標ゼロに移動
+            NumList[i].transform.position += new Vector3(11, -1, -100);
+            UIScrollList.Add(NumList[i]);
+        }
+        //SCORE
+        SCORE.transform.position = new Vector3(-0.5f, 5, -100);//座標ゼロに移動
+        SCORE.transform.position += new Vector3(11, 0, -100);
+        UIScrollList.Add(SCORE);
+    }
+
     private void ScoreReview()
     {
         string reviewscore = GameScore.ToString("000000");
 
-        for (int i = 0; i< NumList.Count; i++)
+        for (int i = 0; i < NumList.Count; i++)
         {
             SpriteRenderer sr;
             sr = NumList[i].GetComponent<SpriteRenderer>();
             //Debug.Log($"er{int.Parse(reviewscore.Substring(i,1))}");
-            sr.sprite = NumSpriteList[int.Parse(reviewscore.Substring(i,1))];
+            sr.sprite = NumSpriteList[int.Parse(reviewscore.Substring(i, 1))];
         }
         //Debug.Log($"reviewscore={reviewscore}");
     }
 
-    public void ScoreCamera(Vector3 pos)
+    public void UICamera(Vector3 pos)//UI移動用
     {
-        for (int i = 0; i < NumList.Count; i++)
+        Debug.Log(UIScrollList.Count);
+        for (int i = 0; i < UIScrollList.Count; i++)
         {
-            NumList[i].transform.position += pos;
+            UIScrollList[i].transform.position += pos;
         }
     }
 }
