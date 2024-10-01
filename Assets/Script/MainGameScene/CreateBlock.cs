@@ -17,6 +17,7 @@ public class CreateBlock : MonoBehaviour
 
     List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
+    List<List<bool>> boolsGrid = new List<List<bool>>();
 
     public int destroycolumn = 0;
     public int column = 0;
@@ -34,46 +35,50 @@ public class CreateBlock : MonoBehaviour
     //}
     public void Destroyblock(int column, int row)//ブロック壊す
     {
-        int zokusei = BombGrid[column][row];
-        //Debug.Log($"zokusei:{zokusei}");
-        if (zokusei == 0)
+        if (boolsGrid[column][row] != true)
         {
-            //Destroy(Grid[column - destroycolumn][row]);
-            SpriteRenderer sr;
-            sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-            sr.sprite = n;
-        }
-        else
-        {
-            //Debug.Log("画像変更");
-            SpriteRenderer sr;
-            sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-            switch (zokusei)
+            boolsGrid[column][row] = true;
+            int zokusei = BombGrid[column][row];
+            //Debug.Log($"zokusei:{zokusei}");
+            if (zokusei == 0)
             {
-                case -1:
-                    sr.sprite = bomb;
-                    Debug.Log("GameOver!!");
-                break;
-                case 1:
-                    sr.sprite = hint1;
-                    scoreManager.ScoreUp(100);
-                break;
-                case 2:
-                    sr.sprite = hint2;
-                    scoreManager.ScoreUp(200);
-                break;
-                case 3:
-                    sr.sprite = hint3;
-                    scoreManager.ScoreUp(300);
-                break;
-                case 4:
-                    sr.sprite = hint4;
-                    scoreManager.ScoreUp(400);
-                break;
-                case 5:
-                    sr.sprite = hint5;
-                    scoreManager.ScoreUp(500);
-                break;
+                //Destroy(Grid[column - destroycolumn][row]);
+                SpriteRenderer sr;
+                sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+                sr.sprite = n;
+            }
+            else
+            {
+                //Debug.Log("画像変更");
+                SpriteRenderer sr;
+                sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+                switch (zokusei)
+                {
+                    case -1:
+                        sr.sprite = bomb;
+                        Debug.Log("GameOver!!");
+                        break;
+                    case 1:
+                        sr.sprite = hint1;
+                        scoreManager.ScoreUp(100);
+                        break;
+                    case 2:
+                        sr.sprite = hint2;
+                        scoreManager.ScoreUp(200);
+                        break;
+                    case 3:
+                        sr.sprite = hint3;
+                        scoreManager.ScoreUp(300);
+                        break;
+                    case 4:
+                        sr.sprite = hint4;
+                        scoreManager.ScoreUp(400);
+                        break;
+                    case 5:
+                        sr.sprite = hint5;
+                        scoreManager.ScoreUp(500);
+                        break;
+                }
             }
         }
 
@@ -84,14 +89,17 @@ public class CreateBlock : MonoBehaviour
     {
         List<GameObject> Row = new List<GameObject>();
         List<int> BombRow = new List<int>();
+        List<bool> boolRow = new List<bool>();
         for (row = 0; row < 10; row++)
         {
             Row.Add(null);
             BombRow.Add(0);
+            boolRow.Add(false);
         }
         Grid.Add(Row);
         BombGrid.Add(BombRow);
         BombGrid.Add(BombRow);
+        boolsGrid.Add(boolRow);
         column++;
     }
 
@@ -100,6 +108,7 @@ public class CreateBlock : MonoBehaviour
     {
         List<GameObject> Row = new List<GameObject>();
         List<int> BombRow = new List<int>();
+        List<bool> boolRow = new List<bool>();
         for (row = 0; row < 10; row++)
         {
             Vector2 placePosition = new Vector2(row, column * (-1));
@@ -130,9 +139,11 @@ public class CreateBlock : MonoBehaviour
             Row.Add(block);
             block.transform.parent=blocksclone.transform;
             BombRow.Add(0);
+            boolRow.Add(false);
         }
         Grid.Add(Row);
         BombGrid.Add(BombRow);
+        boolsGrid.Add(boolRow);
 
         if (Grid.Count > 15)
         {

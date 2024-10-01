@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour
 
     public void UICamera(Vector3 pos)//UI移動用
     {
-        Debug.Log(UIScrollList.Count);
+        //Debug.Log(UIScrollList.Count);
         for (int i = 0; i < UIScrollList.Count; i++)
         {
             UIScrollList[i].transform.position += pos;
