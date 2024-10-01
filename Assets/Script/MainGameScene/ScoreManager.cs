@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] List<Sprite> NumSpriteList;
     public List<GameObject> NumList;
     [SerializeField] GameObject SCORE;
+    [SerializeField] GameObject STEPS;
     private List<GameObject> UIScrollList;//スクロールさせるUIはここにぶち込む
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,10 @@ public class ScoreManager : MonoBehaviour
         SCORE.transform.position = new Vector3(-0.5f, 5, -100);//座標ゼロに移動
         SCORE.transform.position += new Vector3(11, 0, -100);
         UIScrollList.Add(SCORE);
+        //STEPS
+        STEPS.transform.position = new Vector3(-0.5f, 5, -100);//座標ゼロに移動
+        STEPS.transform.position += new Vector3(11, -3, -100);
+        UIScrollList.Add(STEPS);
     }
 
     private void ScoreReview()
