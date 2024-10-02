@@ -56,7 +56,7 @@ public class CreateBlock : MonoBehaviour
                 {
                     case -1:
                         sr.sprite = bomb;
-                        Debug.Log("GameOver!!");
+                        Debug.Log("GameOver!");
                         break;
                     case 1:
                         sr.sprite = hint1;
