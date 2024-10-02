@@ -16,20 +16,26 @@ public class Walk : MonoBehaviour
             Input.GetKey(KeyCode.LeftArrow))
         {
             Debug.Log("test");
-            //animator.SetBool("isWalking", true);
+            animator.SetBool("isWalking", true);
+            if (Input.GetKey(KeyCode.RightArrow) &&
+               Input.GetKey(KeyCode.LeftArrow))
+            {
+                animator.SetBool("isWalking", false);
+            }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.position += new Vector3(0.05f, 0f, 0f);
+                animator.SetBool("isInverse", true);
+                transform.position += new Vector3(0.008f, 0f, 0f);
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.position -= new Vector3(0.05f, 0f, 0f);
+                animator.SetBool("isInverse", false);
+                transform.position -= new Vector3(0.008f, 0f, 0f);
             }
         }
         else
         {
-            //animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
         }
-
     }
 }

@@ -1066,6 +1066,7 @@ GameObject:
   - component: {fileID: 2003592908}
   - component: {fileID: 2003592907}
   - component: {fileID: 2003592910}
+  - component: {fileID: 2003592911}
   m_Layer: 0
   m_Name: float-walk-1
   m_TagString: Untagged
@@ -1083,7 +1084,7 @@ Animator:
   m_GameObject: {fileID: 2003592906}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 837542b57b7c6d74fb32ed9fd76d14b5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 149f46bcb2ea63946ac62dd01f0c7143, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1132,7 +1133,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 591106335
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 486dc3bf799ee8946ac948dd5441c415, type: 3}
@@ -1141,7 +1142,7 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
+  m_AdaptiveModeThreshold: 0.495
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
@@ -1173,6 +1174,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f415f8dfaf21c47856054176297cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!320 &2003592911
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003592906}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 7f7e4a5b642996246b26b2f0b2822e07, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
