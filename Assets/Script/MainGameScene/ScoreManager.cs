@@ -76,7 +76,7 @@ public class ScoreManager : MonoBehaviour
         string reviewsteps = GameSteps.ToString();
         while (reviewsteps.Length != StepsNumlist.Count)
         {
-            Debug.Log(GameSteps);
+            //Debug.Log(GameSteps);
             GameObject newnum;
 
             Quaternion q = new Quaternion();

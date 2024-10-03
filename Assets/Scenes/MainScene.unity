@@ -537,8 +537,9 @@ GameObject:
   m_Component:
   - component: {fileID: 836295075}
   - component: {fileID: 836295074}
-  - component: {fileID: 836295076}
   - component: {fileID: 836295077}
+  - component: {fileID: 836295076}
+  - component: {fileID: 836295078}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -628,7 +629,7 @@ MonoBehaviour:
   createblock: {fileID: 1306326715}
   director: {fileID: 166847001}
   scoreManager: {fileID: 986934356}
-  timeManager: {fileID: 0}
+  timeManager: {fileID: 1049746636}
   space: 0
   button: 0
   uplimit: 0
@@ -654,6 +655,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &836295078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836295072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabcb8db88526a34bb7566806411b0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createblock: {fileID: 1306326715}
+  director: {fileID: 166847001}
+  scoreManager: {fileID: 986934356}
+  timeManager: {fileID: 1049746636}
+  xzahyou: 0
+  yzahyou: 0
 --- !u!1 &897814514
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 100
+  addition_time: 10
 --- !u!1 &1075807887
 GameObject:
   m_ObjectHideFlags: 0

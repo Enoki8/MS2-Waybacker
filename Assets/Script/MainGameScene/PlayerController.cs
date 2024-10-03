@@ -72,16 +72,16 @@ public class PlayerController : MonoBehaviour
 
     private int Pushed()
     {
-        if ((Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow)) ||
-            (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow)))
+        if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)) ||
+            (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
         {
             return 0;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow)) return 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) return 2;
-        if (Input.GetKey(KeyCode.DownArrow)) return 3;
-        if (Input.GetKey(KeyCode.UpArrow)) return 4;
+        if (Input.GetKey(KeyCode.D)) return 1;
+        if (Input.GetKey(KeyCode.A)) return 2;
+        if (Input.GetKey(KeyCode.S)) return 3;
+        if (Input.GetKey(KeyCode.W)) return 4;
 
         return 0;
     }

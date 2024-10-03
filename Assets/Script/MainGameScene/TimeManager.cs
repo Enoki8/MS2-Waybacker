@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class  TimeManager : MonoBehaviour
@@ -17,7 +17,7 @@ public class  TimeManager : MonoBehaviour
 
     void Update()
     {
-        //•b”‚ğ‘‚â‚·‚Æ‚±‚ë
+        //ç§’æ•°ã‚’å¢—ã‚„ã™ã¨ã“ã‚
         if (Input.GetKey(KeyCode.RightControl))
         {
             if ((input_time += Time.deltaTime) > get_keytime)
@@ -31,17 +31,17 @@ public class  TimeManager : MonoBehaviour
         {
             if ((t += Time.deltaTime) > 1)
             {
-                Debug.Log(time);
+                //Debug.Log(time);
                 t = 0;
             }
             time -= Time.deltaTime;
         }
         else
         {
-            Debug.Log("‚¨‚í‚è");
+            Debug.Log("ãŠã‚ã‚Š");
         }
     }
-    //•b”‚ğ‘‚â‚·ˆ—
+    //ç§’æ•°ã‚’å¢—ã‚„ã™å‡¦ç†
     public void Time_Additioner(int addition_time)
     {
                 Debug.Log($"{addition_time}Time_Addition!!!!");

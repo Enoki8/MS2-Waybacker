@@ -15,7 +15,7 @@ public class CreateBlock : MonoBehaviour
     public Sprite bomb;
     public Sprite n;
 
-    List<List<GameObject>> Grid = new List<List<GameObject>>();
+    public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
     List<List<bool>> boolsGrid = new List<List<bool>>();
 
@@ -42,10 +42,10 @@ public class CreateBlock : MonoBehaviour
             //Debug.Log($"zokusei:{zokusei}");
             if (zokusei == 0)
             {
-                //Destroy(Grid[column - destroycolumn][row]);
-                SpriteRenderer sr;
-                sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-                sr.sprite = n;
+                Destroy(Grid[column - destroycolumn][row]);
+                //SpriteRenderer sr;
+                //sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+                //sr.sprite = n;
             }
             else
             {
