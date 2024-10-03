@@ -939,11 +939,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 261c0f73-05a9-4e45-85d8-d7793896f93d
+  cloudProjectId: eb91dbd8-2dff-4c70-8e1f-b5cafbc8d2eb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: fug 2024-06-19_10-46-03
-  organizationId: ashunohito
+  projectName: MS2-Waybacker2
+  organizationId: store112313
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
