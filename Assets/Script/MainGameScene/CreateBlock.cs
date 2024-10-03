@@ -111,7 +111,7 @@ public class CreateBlock : MonoBehaviour
         List<bool> boolRow = new List<bool>();
         for (row = 0; row < 10; row++)
         {
-            Vector2 placePosition = new Vector2(row, column * (-1));
+            Vector2 placePosition = new Vector2(row-6, column * (-1)+1);
             Quaternion q = new Quaternion();
             GameObject block;
             HitCube hitcube;
@@ -164,7 +164,6 @@ public class CreateBlock : MonoBehaviour
         }
 
         column++;
-        //scoreManager.MaterUp();
     }
 
     private void AroundSand(int column, int row)
