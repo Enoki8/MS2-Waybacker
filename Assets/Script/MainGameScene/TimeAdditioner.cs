@@ -7,6 +7,7 @@ public class TimeAdditioner : MonoBehaviour
     [SerializeField] double addition_time = 100;
     private double input_time = 0;
     [SerializeField] double get_keytime = 0.5;
+    double t;
     void Start()
     {
 
@@ -18,7 +19,7 @@ public class TimeAdditioner : MonoBehaviour
             if ((input_time += Time.deltaTime) > get_keytime)
             {
                 Debug.Log("Time_Addition!!!!" + addition_time);
-                TimeManager.static_time += addition_time;
+                t += addition_time;
                 input_time = 0;
             }
         }
