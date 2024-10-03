@@ -12,7 +12,7 @@ public class FollowCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera.transform.position = new Vector3(6.0f, player.transform.position.y-1.0f, camera.transform.position.z);
+        camera.transform.position = new Vector3(0, player.transform.position.y-1.0f, camera.transform.position.z);
     }
     // Update is called once per frame
     void LateUpdate()

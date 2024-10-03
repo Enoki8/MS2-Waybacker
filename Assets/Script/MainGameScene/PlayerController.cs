@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, 0, -1);
+        transform.position = new Vector3(-6, 1, -1);
         maxspace = 8;
         space = 0;
         button = 0;
@@ -59,8 +59,15 @@ public class PlayerController : MonoBehaviour
                 movement = new Vector3(0f, 0.125f, 0f);
                 break;
         }
-
         transform.position += movement;
+        if (space == 0)
+        {
+            if (button == 3 && uplimit == 0)
+            {
+                scoreManager.MaterUp();
+            } 
+        }
+
     }
 
     private int Pushed()
