@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int GameScore;
+    public static int GameScore=0;
     public int GameMater;
     [SerializeField] List<Sprite> NumSpriteList;
     public List<GameObject> NumList;
