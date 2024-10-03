@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] List<Sprite> NumSpriteList;
 
     [SerializeField] GameObject SCORE;
-    public int GameScore;
+    public static int GameScore=0;
     public List<GameObject> ScoreNumList;
 
     public int GameSteps;
