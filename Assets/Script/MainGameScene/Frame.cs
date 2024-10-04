@@ -7,7 +7,7 @@ public class Frame : MonoBehaviour
     void Start()
     {
         startTime = Time.time;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 144;
     }
 
     //void Update()

@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if (button == 3 && uplimit == 0)
             {
                 scoreManager.MaterUp();
-            } 
+            }
         }
 
     }

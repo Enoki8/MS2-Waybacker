@@ -9,9 +9,14 @@ public class NewPlayerController : MonoBehaviour
     private int thisflame;
     [SerializeField] int xzahyou;
     [SerializeField] int yzahyou;
+
+    [SerializeField] float walkingspeed;
+    [SerializeField] int[] PlayerGrids;
+
     // Start is called before the first frame update
     void Start()
     {
+        PlayerGrids = new int[2];
         transform.position = new Vector3(-6, 1, -1);
         thisflame = 0;
     }
@@ -22,14 +27,13 @@ public class NewPlayerController : MonoBehaviour
         thisflame = Pushed();
         if (thisflame != 0)
         {
-            thisflame = WallCheck(thisflame);
-        }
-            //Debug.Log($"int={(int)transform.position.x} new={transform.position.x}");
-            if ((int)transform.position.x == transform.position.x)
+            if (WallCheck(thisflame) != 0)
             {
-                //Debug.Log("test");
+                Walking(thisflame);
                 BlockCheck(thisflame);
             }
+        }
+
     }
 
     private int Pushed()
@@ -49,11 +53,20 @@ public class NewPlayerController : MonoBehaviour
     }
     private int WallCheck(int button)
     {
-        if (
-            (transform.position.x == -6 && button == 2) ||
-            (transform.position.x == 3 && button == 1)
-            )
+        if
+            (transform.position.x <= -6 && button == 2)
         {
+            Vector3 pos = transform.position;
+            pos.x = -6;
+            transform.position = pos;
+            Debug.Log("壁です");
+            return 0;
+        }
+        if (transform.position.x >= 3 && button == 1)
+        {
+            Vector3 pos = transform.position;
+            pos.x = 3;
+            transform.position = pos;
             Debug.Log("壁です");
             return 0;
         }
@@ -61,21 +74,36 @@ public class NewPlayerController : MonoBehaviour
     }
     private void BlockCheck(int button)
     {
-        xzahyou = (int)transform.position.x+6;
-        yzahyou = -((int)transform.position.y);
-        if (button == 1)
+        Vector3 playerPos = transform.position;
+        xzahyou = Mathf.RoundToInt(playerPos.x);
+        yzahyou = Mathf.RoundToInt(playerPos.y);
+        Debug.Log($"x={xzahyou} y={yzahyou}");
+    }
+
+    private void Walking(int button)
+    {
+        Vector3 move = Vector3.zero;
+        switch (button)
         {
-            Debug.Log($"左を調べます 左のブロック；{xzahyou - 1}");
+            case 1:
+                move = new Vector3(walkingspeed, 0, 0);
+                break;
+            case 2:
+                move = new Vector3(-walkingspeed, 0, 0);
+                break;
+            case 3:
+                move = new Vector3(0, -walkingspeed, 0);
+                break;
+            case 4:
+                move = new Vector3(0, walkingspeed, 0);
+                break;
         }
-        if (button == 2)
-        {
-            Debug.Log($"右を調べます 右のブロック；{xzahyou + 1}");
-        }
-        if (
-        (button == 1 && createblock.Grid[xzahyou - 1][yzahyou] != null) ||
-        (button == 2 && createblock.Grid[xzahyou + 1][yzahyou] != null))
-        {
-            Debug.Log("ブロックです");
-        }
+
+        transform.position += (move * Time.deltaTime);
+    }
+
+    private void PlayerGridCheck()
+    {
+
     }
 }

@@ -673,6 +673,8 @@ MonoBehaviour:
   timeManager: {fileID: 1049746636}
   xzahyou: 0
   yzahyou: 0
+  walkingspeed: 8
+  PlayerGrids: 
 --- !u!1 &897814514
 GameObject:
   m_ObjectHideFlags: 0
