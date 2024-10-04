@@ -6,18 +6,22 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] Director director;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] TimeManager timeManager;
+    [SerializeField] GameObject newplayer;
     private int thisflame;
     [SerializeField] int xzahyou;
     [SerializeField] int yzahyou;
 
     [SerializeField] float walkingspeed;
     [SerializeField] int[] PlayerGrids;
+    [SerializeField] int[] Destroyblock;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerGrids = new int[2];
+        Destroyblock = new int[2];
         transform.position = new Vector3(-6, 1, -1);
+        newplayer.transform.position = transform.position;
         thisflame = 0;
     }
 
@@ -30,7 +34,23 @@ public class NewPlayerController : MonoBehaviour
             if (WallCheck(thisflame) != 0)
             {
                 Walking(thisflame);
-                BlockCheck(thisflame);
+                Destroyblock = PlayerGridCheck(thisflame);
+                if (createblock.Grid[Destroyblock[1]][Destroyblock[0]]!=null)
+                {
+                    transform.position = newplayer.transform.position;
+                    if (Input.GetKey(KeyCode.P))
+                    {
+                        createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                    }
+
+                }
+                else
+                {
+                    newplayer.transform.position = transform.position;
+                }
+
+
+
             }
         }
 
@@ -75,7 +95,7 @@ public class NewPlayerController : MonoBehaviour
     private void BlockCheck(int button)
     {
         Vector3 playerPos = transform.position;
-        xzahyou = Mathf.RoundToInt(playerPos.x);
+        xzahyou = Mathf.RoundToInt(playerPos.x) + 6;
         yzahyou = Mathf.RoundToInt(playerPos.y);
         Debug.Log($"x={xzahyou} y={yzahyou}");
     }
@@ -102,8 +122,52 @@ public class NewPlayerController : MonoBehaviour
         transform.position += (move * Time.deltaTime);
     }
 
-    private void PlayerGridCheck()
+    private int[] PlayerGridCheck(int button)
     {
-
+        int[] result = new int[2];
+        Vector3 playerPos = transform.position;
+        xzahyou = Mathf.RoundToInt(playerPos.x) + 6;
+        yzahyou = -(Mathf.RoundToInt(playerPos.y));
+        switch (button)
+        {
+            case 1:
+                if (xzahyou < transform.position.x + 6)
+                {
+                    result[0] = xzahyou + 1;
+                    result[1] = yzahyou + 1;
+                    return result;
+                }
+                break;
+            case 2:
+                if (xzahyou > transform.position.x + 6)
+                {
+                    result[0] = xzahyou - 1;
+                    result[1] = yzahyou + 1;
+                    return result;
+                    //createblock.Destroyblock(yzahyou + 1, xzahyou - 1);
+                }
+                //move = new Vector3(-walkingspeed, 0, 0);
+                break;
+            case 3:
+                if (yzahyou < -(transform.position.y))
+                {
+                    result[0] = xzahyou;
+                    result[1] = yzahyou + 2;
+                    return result;
+                    //createblock.Destroyblock(yzahyou + 2, xzahyou);
+                    //createblock.Createrow();
+                }
+                break;
+            case 4:
+                if (yzahyou > -(transform.position.y))
+                {
+                    result[0] = xzahyou;
+                    result[1] = yzahyou;
+                    return result;
+                    //createblock.Destroyblock(yzahyou, xzahyou);
+                }
+                break;
+        }
+        return null;
     }
 }
