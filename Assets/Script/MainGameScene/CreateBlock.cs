@@ -17,7 +17,7 @@ public class CreateBlock : MonoBehaviour
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
-    List<List<bool>> boolsGrid = new List<List<bool>>();
+    public List<List<bool>> boolsGrid = new List<List<bool>>();
 
     public int destroycolumn = 0;
     public int column = 0;

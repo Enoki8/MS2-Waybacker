@@ -8,6 +8,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] TimeManager timeManager;
     [SerializeField] GameObject newplayer;
     private int thisflame;
+    private bool thisflamecorrect;
     [SerializeField] int xzahyou;
     [SerializeField] int yzahyou;
 
@@ -35,22 +36,26 @@ public class NewPlayerController : MonoBehaviour
             {
                 Walking(thisflame);
                 Destroyblock = PlayerGridCheck(thisflame);
-                if (createblock.Grid[Destroyblock[1]][Destroyblock[0]]!=null)
+                if (Destroyblock != null && createblock.Grid[Destroyblock[1]][Destroyblock[0]] != null)
                 {
-                    transform.position = newplayer.transform.position;
+
                     if (Input.GetKey(KeyCode.P))
                     {
                         createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
                     }
+                    transform.position = newplayer.transform.position;
 
+                }
+                Debug.Log("test1");
+                thisflamecorrect = BlockCorrection(thisflame);
+                if (thisflamecorrect == true)
+                {
+                    transform.position = newplayer.transform.position;
                 }
                 else
                 {
                     newplayer.transform.position = transform.position;
                 }
-
-
-
             }
         }
 
@@ -168,6 +173,53 @@ public class NewPlayerController : MonoBehaviour
                 }
                 break;
         }
+        Debug.Log("test");
         return null;
+    }
+    private bool BlockCorrection(int button)
+    {
+        switch (button)
+        {
+            case 1:
+                if ((int)transform.position.y != transform.position.y)
+                {
+                    Vector3 pos = newplayer.transform.position;
+                    pos.y = Mathf.RoundToInt(transform.position.y);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.y);
+                    return true;
+                }
+                break;
+            case 2:
+                if ((int)transform.position.y != transform.position.y)
+                {
+                    Vector3 pos = newplayer.transform.position;
+                    pos.y = Mathf.RoundToInt(transform.position.y);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.y);
+                    return true;
+                }
+                break;
+            case 3:
+                if ((int)transform.position.x != transform.position.x)
+                {
+                    Vector3 pos = newplayer.transform.position;
+                    pos.x = Mathf.RoundToInt(transform.position.x);
+                    newplayer.transform.position = pos;
+                    return true;
+                }
+                break;
+            case 4:
+                if ((int)transform.position.x != transform.position.x)
+                {
+                    Vector3 pos = newplayer.transform.position;
+                    pos.x = Mathf.RoundToInt(transform.position.x);
+                    newplayer.transform.position = pos;
+                    return true;
+                }
+                break;
+
+        }
+        return false;
     }
 }
