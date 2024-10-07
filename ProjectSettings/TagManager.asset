@@ -40,6 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cursor
+    uniqueID: 185245107
+    locked: 0
+  - name: Player
+    uniqueID: 2886249881
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Blocks
+    uniqueID: 2761996657
+    locked: 0
+  - name: UI
+    uniqueID: 3805908499
     locked: 0

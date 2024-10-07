@@ -31,37 +31,41 @@ public class NewPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        thisflame = Pushed();
-        if (thisflame != 0)
+        if (Input.GetKey(KeyCode.R)==false)
         {
-            if (WallCheck(thisflame) != 0)
+            thisflame = Pushed();
+            if (thisflame != 0)
             {
-                Walking(thisflame);
-                Destroyblock = PlayerGridCheck(thisflame);
-                if (Destroyblock != null && createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
+                if (WallCheck(thisflame) != 0)
                 {
-
-                    if (Input.GetKey(KeyCode.P))
+                    Walking(thisflame);
+                    Destroyblock = PlayerGridCheck(thisflame);
+                    if (Destroyblock != null && createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                     {
-                        //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
-                        createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
-                    }
-                    transform.position = newplayer.transform.position;
 
+                        if (Input.GetKey(KeyCode.P))
+                        {
+                            //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
+                            createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                        }
+                        transform.position = newplayer.transform.position;
+
+                    }
+                    thisflamecorrect = BlockCorrection(thisflame);
+                    if (thisflamecorrect == true)
+                    {
+                        transform.position = newplayer.transform.position;
+                    }
+                    else
+                    {
+                        newplayer.transform.position = transform.position;
+                    }
                 }
-                thisflamecorrect = BlockCorrection(thisflame);
-                if (thisflamecorrect == true)
-                {
-                    transform.position = newplayer.transform.position;
-                }
-                else
-                {
-                    newplayer.transform.position = transform.position;
-                }
+                newplayer.transform.position = transform.position;
+                MaterCheck();
             }
-            newplayer.transform.position = transform.position;
-            MaterCheck();
         }
+
 
     }
 
@@ -98,11 +102,11 @@ public class NewPlayerController : MonoBehaviour
             return 0;
         }
 
-        if ((scoreManager.GameSteps-4 >=-(transform.position.y)) && button==4)
+        if ((scoreManager.GameSteps - 4 >= -(transform.position.y)) && button == 4)
         {
             return 0;
         }
-            return button;
+        return button;
     }
 
     private void Walking(int button)
@@ -239,7 +243,7 @@ public class NewPlayerController : MonoBehaviour
     private void MaterCheck()
     {
         Vector3 playerPos = newplayer.transform.position;
-        if (scoreManager.GameSteps<-(Mathf.RoundToInt(playerPos.y)-1))
+        if (scoreManager.GameSteps < -(Mathf.RoundToInt(playerPos.y) - 1))
         {
             scoreManager.MaterUp();
             createblock.Createrow();
