@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     [SerializeField] List<Sprite> NumSpriteList;
+    [SerializeField] FollowCamera followcamera;
 
     [SerializeField] GameObject SCORE;
     public static int GameScore=0;
@@ -18,11 +19,13 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] GameObject STEPS;
     private List<GameObject> UIScrollList;//スクロールさせるUIはここにぶち込む
+
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log(NumSpriteList.Count);
         UIScrollList = new List<GameObject>();
+
         SetStartSprict();
         StepsReview();
     }
@@ -52,6 +55,7 @@ public class ScoreManager : MonoBehaviour
         {
             UIScrollList.Add(ScoreNumList[i]);
         }
+        UIScrollList.Add(StepsNumlist[0]);
         UIScrollList.Add(SCORE);
         UIScrollList.Add(STEPS);
     }
@@ -75,14 +79,12 @@ public class ScoreManager : MonoBehaviour
         string reviewsteps = GameSteps.ToString();
         while (reviewsteps.Length != StepsNumlist.Count)
         {
-            //Debug.Log(GameSteps);
             GameObject newnum;
-
             Quaternion q = new Quaternion();
             Vector3 pos = new Vector3(0, 0, 0);
             newnum = Instantiate(Number_0,pos, q);
-            newnum.transform.position += new Vector3(((StepsNumlist.Count) * -0.5f) + 7, -(0.5f + GameSteps), +100);
-            //ゲームオブジェクト生成後にカメラをLateUpdateしているため1フレーム分ずれてしまう。PlayerControllerの見直し。
+            Debug.Log($"StepNumlist.Count:{StepsNumlist.Count} GameSteps:{GameSteps}");
+            newnum.transform.position += new Vector3(((StepsNumlist.Count) * -0.5f) + 7, StepsNumlist[0].transform.position.y, +100);
             StepsNumlist.Add(newnum);
             UIScrollList.Add(newnum);
         }
@@ -103,5 +105,6 @@ public class ScoreManager : MonoBehaviour
         {
             UIScrollList[i].transform.position += pos;
         }
+
     }
 }

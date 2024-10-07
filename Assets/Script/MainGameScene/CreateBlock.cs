@@ -144,7 +144,7 @@ public class CreateBlock : MonoBehaviour
         Grid.Add(Row);
         BombGrid.Add(BombRow);
         boolsGrid.Add(boolRow);
-
+        //Debug.Log(Grid.Count);
         if (Grid.Count > 15)
         {
             for (row = 0; row < 10; row++)

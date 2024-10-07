@@ -18,7 +18,8 @@ public class FollowCamera : MonoBehaviour
     void LateUpdate()
     {
         beforecamera = transform.position;
-        if (Player.uplimit == 0)
+        //Debug.Log($"player:{player.transform.position.y} camera:{camera.transform.position.y}");
+        if (player.transform.position.y-1.0f<camera.transform.position.y)
         {
             camera.transform.position = new Vector3(camera.transform.position.x, player.transform.position.y - 1.0f, camera.transform.position.z);
         }

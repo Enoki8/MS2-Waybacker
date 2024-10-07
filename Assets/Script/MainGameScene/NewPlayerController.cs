@@ -16,6 +16,8 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int[] PlayerGrids;
     [SerializeField] int[] Destroyblock;
 
+    public int uplimit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +38,13 @@ public class NewPlayerController : MonoBehaviour
             {
                 Walking(thisflame);
                 Destroyblock = PlayerGridCheck(thisflame);
-                if (Destroyblock != null && createblock.Grid[Destroyblock[1]][Destroyblock[0]] != null)
+                if (Destroyblock != null && createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                 {
 
                     if (Input.GetKey(KeyCode.P))
                     {
+                        //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
+
                         createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
                     }
                     transform.position = newplayer.transform.position;
@@ -95,14 +99,13 @@ public class NewPlayerController : MonoBehaviour
             Debug.Log("壁です");
             return 0;
         }
-        return button;
-    }
-    private void BlockCheck(int button)
-    {
-        Vector3 playerPos = transform.position;
-        xzahyou = Mathf.RoundToInt(playerPos.x) + 6;
-        yzahyou = Mathf.RoundToInt(playerPos.y);
-        Debug.Log($"x={xzahyou} y={yzahyou}");
+
+        if ((scoreManager.GameSteps-4 >=-(transform.position.y)) && button==4)
+        {
+            Debug.Log("上昇制限");
+            return 0;
+        }
+            return button;
     }
 
     private void Walking(int button)
@@ -140,12 +143,12 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou + 1;
                     result[1] = yzahyou + 1;
-                    Debug.Log("ブロックです");
+                    //Debug.Log("ブロックです");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.x);
+                    //Debug.Log(newplayer.transform.position.x);
 
                     return result;
                 }
@@ -155,12 +158,12 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou - 1;
                     result[1] = yzahyou + 1;
-                    Debug.Log("ブロックです");
+                    //Debug.Log("ブロックです");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.x);
+                    //Debug.Log(newplayer.transform.position.x);
 
                     return result;
                     //createblock.Destroyblock(yzahyou + 1, xzahyou - 1);
@@ -172,12 +175,12 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou + 2;
-                    Debug.Log("ブロックです");
+                    //Debug.Log("ブロックです");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.y);
+                    //Debug.Log(newplayer.transform.position.y);
 
                     return result;
                     //createblock.Destroyblock(yzahyou + 2, xzahyou);
@@ -189,12 +192,12 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou;
-                    Debug.Log("ブロックです");
+                    //Debug.Log("ブロックです");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.y);
+                    //Debug.Log(newplayer.transform.position.y);
 
                     return result;
                     //createblock.Destroyblock(yzahyou, xzahyou);
@@ -252,11 +255,12 @@ public class NewPlayerController : MonoBehaviour
     private void MaterCheck()
     {
         Vector3 playerPos = newplayer.transform.position;
-        Debug.Log($"STEPS:{scoreManager.GameSteps}Vector{-(Mathf.RoundToInt(playerPos.y))}");
+        //Debug.Log($"STEPS:{scoreManager.GameSteps}Vector{-(Mathf.RoundToInt(playerPos.y))}");
         if (scoreManager.GameSteps<-(Mathf.RoundToInt(playerPos.y)-1))
         {
             scoreManager.MaterUp();
             createblock.Createrow();
         }
     }
+
 }

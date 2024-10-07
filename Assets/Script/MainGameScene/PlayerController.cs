@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                     Locate[0]--;
                     break;
             }
-
+            Debug.Log($"Locate0:{Locate[0]} Locate1:{Locate[1]}");
             createblock.Destroyblock(Locate[0], Locate[1]);
         }
     }
