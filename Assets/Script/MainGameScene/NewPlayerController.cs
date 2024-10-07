@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class NewPlayerController : MonoBehaviour
 {
@@ -44,7 +44,6 @@ public class NewPlayerController : MonoBehaviour
                     if (Input.GetKey(KeyCode.P))
                     {
                         //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
-
                         createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
                     }
                     transform.position = newplayer.transform.position;
@@ -60,6 +59,7 @@ public class NewPlayerController : MonoBehaviour
                     newplayer.transform.position = transform.position;
                 }
             }
+            newplayer.transform.position = transform.position;
             MaterCheck();
         }
 
@@ -88,7 +88,6 @@ public class NewPlayerController : MonoBehaviour
             Vector3 pos = transform.position;
             pos.x = -6;
             transform.position = pos;
-            Debug.Log("ï«Ç≈Ç∑");
             return 0;
         }
         if (transform.position.x >= 3 && button == 1)
@@ -96,13 +95,11 @@ public class NewPlayerController : MonoBehaviour
             Vector3 pos = transform.position;
             pos.x = 3;
             transform.position = pos;
-            Debug.Log("ï«Ç≈Ç∑");
             return 0;
         }
 
         if ((scoreManager.GameSteps-4 >=-(transform.position.y)) && button==4)
         {
-            Debug.Log("è„è∏êßå¿");
             return 0;
         }
             return button;
@@ -143,12 +140,10 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou + 1;
                     result[1] = yzahyou + 1;
-                    //Debug.Log("ÉuÉçÉbÉNÇ≈Ç∑");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
-                    //Debug.Log(newplayer.transform.position.x);
 
                     return result;
                 }
@@ -158,33 +153,25 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou - 1;
                     result[1] = yzahyou + 1;
-                    //Debug.Log("ÉuÉçÉbÉNÇ≈Ç∑");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
-                    //Debug.Log(newplayer.transform.position.x);
 
                     return result;
-                    //createblock.Destroyblock(yzahyou + 1, xzahyou - 1);
                 }
-                //move = new Vector3(-walkingspeed, 0, 0);
                 break;
             case 3:
                 if (yzahyou < -(transform.position.y))
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou + 2;
-                    //Debug.Log("ÉuÉçÉbÉNÇ≈Ç∑");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    //Debug.Log(newplayer.transform.position.y);
 
                     return result;
-                    //createblock.Destroyblock(yzahyou + 2, xzahyou);
-                    //createblock.Createrow();
                 }
                 break;
             case 4:
@@ -192,15 +179,12 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou;
-                    //Debug.Log("ÉuÉçÉbÉNÇ≈Ç∑");
 
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    //Debug.Log(newplayer.transform.position.y);
 
                     return result;
-                    //createblock.Destroyblock(yzahyou, xzahyou);
                 }
                 break;
         }
@@ -255,7 +239,6 @@ public class NewPlayerController : MonoBehaviour
     private void MaterCheck()
     {
         Vector3 playerPos = newplayer.transform.position;
-        //Debug.Log($"STEPS:{scoreManager.GameSteps}Vector{-(Mathf.RoundToInt(playerPos.y))}");
         if (scoreManager.GameSteps<-(Mathf.RoundToInt(playerPos.y)-1))
         {
             scoreManager.MaterUp();
