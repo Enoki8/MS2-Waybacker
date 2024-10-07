@@ -46,7 +46,6 @@ public class NewPlayerController : MonoBehaviour
                     transform.position = newplayer.transform.position;
 
                 }
-                Debug.Log("test1");
                 thisflamecorrect = BlockCorrection(thisflame);
                 if (thisflamecorrect == true)
                 {
@@ -57,6 +56,7 @@ public class NewPlayerController : MonoBehaviour
                     newplayer.transform.position = transform.position;
                 }
             }
+            MaterCheck();
         }
 
     }
@@ -140,6 +140,13 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou + 1;
                     result[1] = yzahyou + 1;
+                    Debug.Log("ブロックです");
+
+                    Vector3 pos = newplayer.transform.position;
+                    pos.x = Mathf.RoundToInt(transform.position.x);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.x);
+
                     return result;
                 }
                 break;
@@ -148,6 +155,13 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou - 1;
                     result[1] = yzahyou + 1;
+                    Debug.Log("ブロックです");
+
+                    Vector3 pos = newplayer.transform.position;
+                    pos.x = Mathf.RoundToInt(transform.position.x);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.x);
+
                     return result;
                     //createblock.Destroyblock(yzahyou + 1, xzahyou - 1);
                 }
@@ -158,6 +172,13 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou + 2;
+                    Debug.Log("ブロックです");
+
+                    Vector3 pos = newplayer.transform.position;
+                    pos.y = Mathf.RoundToInt(transform.position.y);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.y);
+
                     return result;
                     //createblock.Destroyblock(yzahyou + 2, xzahyou);
                     //createblock.Createrow();
@@ -168,12 +189,18 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou;
                     result[1] = yzahyou;
+                    Debug.Log("ブロックです");
+
+                    Vector3 pos = newplayer.transform.position;
+                    pos.y = Mathf.RoundToInt(transform.position.y);
+                    newplayer.transform.position = pos;
+                    Debug.Log(newplayer.transform.position.y);
+
                     return result;
                     //createblock.Destroyblock(yzahyou, xzahyou);
                 }
                 break;
         }
-        Debug.Log("test");
         return null;
     }
     private bool BlockCorrection(int button)
@@ -221,5 +248,15 @@ public class NewPlayerController : MonoBehaviour
 
         }
         return false;
+    }
+    private void MaterCheck()
+    {
+        Vector3 playerPos = newplayer.transform.position;
+        Debug.Log($"STEPS:{scoreManager.GameSteps}Vector{-(Mathf.RoundToInt(playerPos.y))}");
+        if (scoreManager.GameSteps<-(Mathf.RoundToInt(playerPos.y)-1))
+        {
+            scoreManager.MaterUp();
+            createblock.Createrow();
+        }
     }
 }

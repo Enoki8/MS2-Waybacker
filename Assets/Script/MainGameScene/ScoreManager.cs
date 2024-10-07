@@ -22,7 +22,6 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         //Debug.Log(NumSpriteList.Count);
-
         UIScrollList = new List<GameObject>();
         SetStartSprict();
         StepsReview();
