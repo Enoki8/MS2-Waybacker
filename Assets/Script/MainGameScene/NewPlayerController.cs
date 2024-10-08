@@ -12,7 +12,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int xzahyou;
     [SerializeField] int yzahyou;
 
-    [SerializeField] float walkingspeed;
+    public  float walkingspeed;
     [SerializeField] int[] PlayerGrids;
     [SerializeField] int[] Destroyblock;
 
@@ -110,8 +110,7 @@ public class NewPlayerController : MonoBehaviour
     }
 
     private void Walking(int button)
-    {
-        Vector3 move = Vector3.zero;
+    {        Vector3 move = Vector3.zero;
         switch (button)
         {
             case 1:
@@ -204,7 +203,7 @@ public class NewPlayerController : MonoBehaviour
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.y);
+                    //Debug.Log(newplayer.transform.position.y);
                     return true;
                 }
                 break;
@@ -214,7 +213,7 @@ public class NewPlayerController : MonoBehaviour
                     Vector3 pos = newplayer.transform.position;
                     pos.y = Mathf.RoundToInt(transform.position.y);
                     newplayer.transform.position = pos;
-                    Debug.Log(newplayer.transform.position.y);
+                    //Debug.Log(newplayer.transform.position.y);
                     return true;
                 }
                 break;
