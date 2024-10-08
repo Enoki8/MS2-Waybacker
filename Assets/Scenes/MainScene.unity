@@ -460,9 +460,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.19832891
     width: 1
-    height: 1
+    height: 0.6033422
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1803,10 +1803,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021906117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4914e5562f130c4db2e7decc88284db, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d54023d9492cfc48bce32326657fcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpRend: {fileID: 2021906120}
+  Renderer: {fileID: 2021906120}
+  NewPlayer: {fileID: 774589044}
+  NewPlayerController: {fileID: 836295078}
+  Flag: {fileID: 7477655980380852654, guid: 4c241857ea5e6474a93624cf32fd8e60, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
