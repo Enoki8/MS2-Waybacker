@@ -8,6 +8,7 @@ public class CursorController : MonoBehaviour
     [SerializeField] NewPlayerController NewPlayerController;
     [SerializeField] GameObject Flag;
     private int[] cursorLotate = new int[2];
+    private int[] flaglotate = new int[2];
     private int thisflame;
     // Start is called before the first frame update
     void Start()
