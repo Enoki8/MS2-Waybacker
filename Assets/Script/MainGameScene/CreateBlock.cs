@@ -7,6 +7,7 @@ public class CreateBlock : MonoBehaviour
     [SerializeField] GameObject mine;
     [SerializeField] PlayerController player;
     [SerializeField] GameObject blocksclone;
+    public Sprite flag;
     public Sprite hint1;
     public Sprite hint2;
     public Sprite hint3;
@@ -192,6 +193,20 @@ public class CreateBlock : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public void CreateFlags(int row , int column)
+    {
+        Debug.Log($"x:{column-destroycolumn} y:{row}");
+        SpriteRenderer sr;
+        sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+        if (sr == n)
+        {
+            sr.sprite = flag;
+        }
+        if (sr == flag)
+        {
+            sr.sprite = n;
         }
     }
 }

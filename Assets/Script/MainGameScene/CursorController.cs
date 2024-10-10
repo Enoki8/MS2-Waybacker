@@ -6,9 +6,10 @@ public class CursorController : MonoBehaviour
     [SerializeField] Renderer Renderer;
     [SerializeField] GameObject NewPlayer;
     [SerializeField] NewPlayerController NewPlayerController;
+    [SerializeField] CreateBlock createBlock;
     [SerializeField] GameObject Flag;
     private int[] cursorLotate = new int[2];
-    private int[] flaglotate = new int[2];
+    private bool[] flaglotate = new bool[2];
     private int thisflame;
     // Start is called before the first frame update
     void Start()
@@ -72,15 +73,19 @@ public class CursorController : MonoBehaviour
         {
             case 1:
                 move = new Vector3(1, 0, 0);
+                cursorLotate[0]++;
                 break;
             case 2:
                 move = new Vector3(-1, 0, 0);
+                cursorLotate[0]--;
                 break;
             case 3:
                 move = new Vector3(0, -1, 0);
+                cursorLotate[1]++;
                 break;
             case 4:
                 move = new Vector3(0, 1, 0);
+                cursorLotate[1]--;
                 break;
             case 5:
                 InsertFlag();
@@ -90,9 +95,6 @@ public class CursorController : MonoBehaviour
     }
     private void InsertFlag()
     {
-        Vector3 pos = transform.position;
-        GameObject newflag;
-        Quaternion q = new Quaternion();
-        newflag = Instantiate(Flag,pos, q);
+        createBlock.CreateFlags(cursorLotate[0], cursorLotate[1]+1);
     }
 }
