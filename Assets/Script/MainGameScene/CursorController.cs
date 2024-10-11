@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
+using static UnityEditor.PlayerSettings;
 
 public class CursorController : MonoBehaviour
 {
@@ -72,20 +73,31 @@ public class CursorController : MonoBehaviour
         switch (button)
         {
             case 1:
-                move = new Vector3(1, 0, 0);
-                cursorLotate[0]++;
+                if (cursorLotate[0]< 9){
+                    move = new Vector3(1, 0, 0);
+                    cursorLotate[0]++;
+                }
                 break;
             case 2:
-                move = new Vector3(-1, 0, 0);
-                cursorLotate[0]--;
+                if (cursorLotate[0] > 0)
+                {
+                    move = new Vector3(-1, 0, 0);
+                    cursorLotate[0]--;
+                }
                 break;
             case 3:
-                move = new Vector3(0, -1, 0);
-                cursorLotate[1]++;
+                if (cursorLotate[1]<= -(Mathf.RoundToInt(NewPlayer.transform.position.y)-4))
+                {
+                    move = new Vector3(0, -1, 0);
+                    cursorLotate[1]++;
+                }
                 break;
             case 4:
-                move = new Vector3(0, 1, 0);
-                cursorLotate[1]--;
+                if (cursorLotate[1] >= -(Mathf.RoundToInt(NewPlayer.transform.position.y) + 2))
+                {
+                    move = new Vector3(0, 1, 0);
+                    cursorLotate[1]--;
+                }
                 break;
             case 5:
                 InsertFlag();

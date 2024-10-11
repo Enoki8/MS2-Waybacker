@@ -7,14 +7,11 @@ public class CreateBlock : MonoBehaviour
     [SerializeField] GameObject mine;
     [SerializeField] PlayerController player;
     [SerializeField] GameObject blocksclone;
+    public Sprite[] hints;
     public Sprite flag;
-    public Sprite hint1;
-    public Sprite hint2;
-    public Sprite hint3;
-    public Sprite hint4;
-    public Sprite hint5;
     public Sprite bomb;
-    public Sprite n;
+    public Sprite nullblock;
+    public Sprite null2;
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
@@ -53,32 +50,15 @@ public class CreateBlock : MonoBehaviour
                 //Debug.Log("画像変更");
                 SpriteRenderer sr;
                 sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-                switch (zokusei)
+                if (zokusei == -1)
                 {
-                    case -1:
-                        sr.sprite = bomb;
-                        Debug.Log("GameOver!");
-                        break;
-                    case 1:
-                        sr.sprite = hint1;
-                        scoreManager.ScoreUp(100);
-                        break;
-                    case 2:
-                        sr.sprite = hint2;
-                        scoreManager.ScoreUp(200);
-                        break;
-                    case 3:
-                        sr.sprite = hint3;
-                        scoreManager.ScoreUp(300);
-                        break;
-                    case 4:
-                        sr.sprite = hint4;
-                        scoreManager.ScoreUp(400);
-                        break;
-                    case 5:
-                        sr.sprite = hint5;
-                        scoreManager.ScoreUp(500);
-                        break;
+                    sr.sprite = bomb;
+                    Debug.Log("Gameover!");
+                }
+                else
+                {
+                    sr.sprite = hints[zokusei];
+                    scoreManager.ScoreUp(zokusei * 100);
                 }
             }
         }
@@ -112,7 +92,7 @@ public class CreateBlock : MonoBehaviour
         List<bool> boolRow = new List<bool>();
         for (row = 0; row < 10; row++)
         {
-            Vector2 placePosition = new Vector2(row-6, column * (-1)+1);
+            Vector2 placePosition = new Vector2(row - 6, column * (-1) + 1);
             Quaternion q = new Quaternion();
             GameObject block;
             HitCube hitcube;
@@ -138,7 +118,7 @@ public class CreateBlock : MonoBehaviour
                 hitcube.BombGrid = BombGrid;
             }
             Row.Add(block);
-            block.transform.parent=blocksclone.transform;
+            block.transform.parent = blocksclone.transform;
             BombRow.Add(0);
             boolRow.Add(false);
         }
@@ -195,18 +175,20 @@ public class CreateBlock : MonoBehaviour
             }
         }
     }
-    public void CreateFlags(int row , int column)
+    public void CreateFlags(int row, int column)
     {
-        Debug.Log($"x:{column-destroycolumn} y:{row}");
+        Debug.Log($"x:{column - destroycolumn} y:{row}");
         SpriteRenderer sr;
         sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-        if (sr == n)
+        Debug.Log($"sr{sr.sprite.name} n{null2.name} flag{flag.name}");
+        if (sr.sprite.name == "Number_null")
         {
             sr.sprite = flag;
         }
-        if (sr == flag)
+        else if (sr.sprite.name == "Flag")
         {
-            sr.sprite = n;
+            sr.sprite = nullblock;
         }
     }
+
 }

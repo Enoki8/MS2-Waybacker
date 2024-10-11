@@ -83,7 +83,6 @@ public class ScoreManager : MonoBehaviour
             Quaternion q = new Quaternion();
             Vector3 pos = new Vector3(0, 0, 0);
             newnum = Instantiate(Number_0,pos, q);
-            Debug.Log($"StepNumlist.Count:{StepsNumlist.Count} GameSteps:{GameSteps}");
             newnum.transform.position += new Vector3(((StepsNumlist.Count) * -0.5f) + 7, StepsNumlist[0].transform.position.y, +100);
             newnum.transform.parent=StepsNumber.transform;
             StepsNumlist.Add(newnum);

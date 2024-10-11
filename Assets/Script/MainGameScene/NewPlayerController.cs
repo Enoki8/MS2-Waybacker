@@ -12,7 +12,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int xzahyou;
     [SerializeField] int yzahyou;
 
-    public  float walkingspeed;
+    public float walkingspeed;
     [SerializeField] int[] PlayerGrids;
     [SerializeField] int[] Destroyblock;
 
@@ -31,7 +31,7 @@ public class NewPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R)==false)
+        if (Input.GetKey(KeyCode.R) == false)
         {
             thisflame = Pushed();
             if (thisflame != 0)
@@ -40,15 +40,18 @@ public class NewPlayerController : MonoBehaviour
                 {
                     Walking(thisflame);
                     Destroyblock = PlayerGridCheck(thisflame);
-                    if (Destroyblock != null && createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
+                    if (Destroyblock != null)
                     {
-
-                        if (Input.GetKey(KeyCode.P))
+                        if (createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                         {
-                            //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
-                            createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                            if (Input.GetKey(KeyCode.P))
+                            {
+                                //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
+                                createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                            }
+                            transform.position = newplayer.transform.position;
                         }
-                        transform.position = newplayer.transform.position;
+
 
                     }
                     thisflamecorrect = BlockCorrection(thisflame);
@@ -110,7 +113,8 @@ public class NewPlayerController : MonoBehaviour
     }
 
     private void Walking(int button)
-    {        Vector3 move = Vector3.zero;
+    {
+        Vector3 move = Vector3.zero;
         switch (button)
         {
             case 1:
