@@ -6,6 +6,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] PlayerController Player;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] UIViewer viewer;
     public new GameObject camera;
     private Vector3 beforecamera;
     private Vector3 aftercamera;
@@ -23,15 +24,15 @@ public class FollowCamera : MonoBehaviour
         {
             camera.transform.position = new Vector3(camera.transform.position.x, player.transform.position.y - 1.0f, camera.transform.position.z);
         }
-        ScoreUI();
+        ScrollUI();
 
     }
 
-    private void ScoreUI()
+    private void ScrollUI()
     {
         aftercamera=(transform.position - beforecamera);
         {
-            scoreManager.UICamera(aftercamera);
+            viewer.UICamera(aftercamera);
         }
     }
 }

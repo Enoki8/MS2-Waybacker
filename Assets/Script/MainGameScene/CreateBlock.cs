@@ -177,10 +177,8 @@ public class CreateBlock : MonoBehaviour
     }
     public void CreateFlags(int row, int column)
     {
-        Debug.Log($"x:{column - destroycolumn} y:{row}");
         SpriteRenderer sr;
         sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-        Debug.Log($"sr{sr.sprite.name} n{null2.name} flag{flag.name}");
         if (sr.sprite.name == "Number_null")
         {
             sr.sprite = flag;
@@ -190,5 +188,4 @@ public class CreateBlock : MonoBehaviour
             sr.sprite = nullblock;
         }
     }
-
 }

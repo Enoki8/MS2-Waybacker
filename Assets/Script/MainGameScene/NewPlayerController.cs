@@ -16,6 +16,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int[] PlayerGrids;
     [SerializeField] int[] Destroyblock;
 
+
     public int uplimit;
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class NewPlayerController : MonoBehaviour
                             {
                                 //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
                                 createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                                timeManager.Time_Additioner(2);
                             }
                             transform.position = newplayer.transform.position;
                         }
@@ -140,6 +142,8 @@ public class NewPlayerController : MonoBehaviour
         Vector3 playerPos = transform.position;
         xzahyou = Mathf.RoundToInt(playerPos.x) + 6;
         yzahyou = -(Mathf.RoundToInt(playerPos.y));
+        //Debug.Log($"x;{xzahyou} y;{yzahyou}");
+
         switch (button)
         {
             case 1:
@@ -147,10 +151,10 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou + 1;
                     result[1] = yzahyou + 1;
-
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
+                    //Debug.Log($"x;{result[0]} y;{result[1]}");
 
                     return result;
                 }
@@ -160,11 +164,10 @@ public class NewPlayerController : MonoBehaviour
                 {
                     result[0] = xzahyou - 1;
                     result[1] = yzahyou + 1;
-
                     Vector3 pos = newplayer.transform.position;
                     pos.x = Mathf.RoundToInt(transform.position.x);
                     newplayer.transform.position = pos;
-
+                    //Debug.Log($"x;{result[0]} y;{result[1]}");
                     return result;
                 }
                 break;
