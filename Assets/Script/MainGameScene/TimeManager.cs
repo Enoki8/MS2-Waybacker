@@ -39,7 +39,6 @@ public class  TimeManager : MonoBehaviour
         {
             Debug.Log("おわり");
         }
-        Debug.Log(aftertime);
         Vector2 pos=transform.position;
         float newpos = (float)((Time.deltaTime)*0.1);
         pos.y -= newpos;
@@ -50,7 +49,7 @@ public class  TimeManager : MonoBehaviour
     {
         beforetime = (float)time;
 
-        Debug.Log($"{addition_time}Time_Addition!!!!");
+        //Debug.Log($"{addition_time}Time_Addition!!!!");
         time += addition_time;
         if (time > 100) 
         {

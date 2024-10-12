@@ -16,6 +16,8 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int[] PlayerGrids;
     [SerializeField] int[] Destroyblock;
 
+    private float downslide;
+    private int downflame;
 
     public int uplimit;
 
@@ -32,44 +34,65 @@ public class NewPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R) == false)
+        thisflame = 0;
+        if (downslide == 0)
         {
-            thisflame = Pushed();
-            if (thisflame != 0)
+            if (Input.GetKey(KeyCode.R) == false)
             {
-                if (WallCheck(thisflame) != 0)
+                thisflame = Pushed();
+                if (thisflame != 0)
                 {
-                    Walking(thisflame);
-                    Destroyblock = PlayerGridCheck(thisflame);
-                    if (Destroyblock != null)
+                    if (WallCheck(thisflame) != 0)
                     {
-                        if (createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
+                        Walking(thisflame);
+                        Destroyblock = PlayerGridCheck(thisflame);
+                        if (Destroyblock != null)
                         {
-                            if (Input.GetKey(KeyCode.P))
+                            if (createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                             {
-                                //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
-                                createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
-                                timeManager.Time_Additioner(2);
+                                if (Input.GetKey(KeyCode.P))
+                                {
+                                    //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
+                                    createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                                    timeManager.Time_Additioner(2);
+
+                                    downslide = 1;
+                                    downflame = 10;
+
+                                }
+                                transform.position = newplayer.transform.position;
                             }
+
+
+                        }
+                        thisflamecorrect = BlockCorrection(thisflame);
+                        if (thisflamecorrect == true)
+                        {
                             transform.position = newplayer.transform.position;
                         }
-
-
+                        else
+                        {
+                            newplayer.transform.position = transform.position;
+                        }
                     }
-                    thisflamecorrect = BlockCorrection(thisflame);
-                    if (thisflamecorrect == true)
-                    {
-                        transform.position = newplayer.transform.position;
-                    }
-                    else
-                    {
-                        newplayer.transform.position = transform.position;
-                    }
+                    newplayer.transform.position = transform.position;
+                    MaterCheck();
                 }
-                newplayer.transform.position = transform.position;
-                MaterCheck();
             }
         }
+        else
+        {
+
+            if (downflame != 0)
+            {
+                downflame--;
+            }
+            else
+            {
+                downslide = 0;
+            }
+        }
+
 
 
     }

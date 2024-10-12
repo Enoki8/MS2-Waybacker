@@ -9,7 +9,7 @@ public class UIViewer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIScrollList = new List<GameObject>();
+        //UIScrollList = new List<GameObject>();
     }
 
     // Update is called once per frame
