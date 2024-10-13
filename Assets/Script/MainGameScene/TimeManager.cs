@@ -24,8 +24,6 @@ public class  TimeManager : MonoBehaviour
         static_time = time;
         UIViewer.UIScrollList.Add(Bar_1);
         UIViewer.UIScrollList.Add(this.gameObject);
-
-        RectTransform.pivot = new Vector2(RectTransform.pivot.x, 0);
     }
 
     void Update()
@@ -34,15 +32,15 @@ public class  TimeManager : MonoBehaviour
         if (time > 0)
         {
             time -= Time.deltaTime;
+            Vector2 pos = transform.position;
+            float newpos = (float)((Time.deltaTime) * 0.1);
+            pos.y -= newpos;
+            transform.position = pos;
         }
         else
         {
             Debug.Log("おわり");
         }
-        Vector2 pos=transform.position;
-        float newpos = (float)((Time.deltaTime)*0.1);
-        pos.y -= newpos;
-        transform.position = pos;
     }
     //秒数を増やす処理
     public void Time_Additioner(int addition_time)
