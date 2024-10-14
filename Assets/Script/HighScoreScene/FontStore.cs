@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FontStore : MonoBehaviour
 {
-    [SerializeField] Sprite[] fonts;
-    [SerializeField] Sprite[] number;
+    public Sprite[] fonts;
+    public Sprite[] number;
     // Start is called before the first frame update
     void Start()
     {

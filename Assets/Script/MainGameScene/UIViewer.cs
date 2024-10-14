@@ -7,16 +7,16 @@ public class UIViewer : MonoBehaviour
     public List<GameObject> UIScrollList;//スクロールさせるUIはここにぶち込む
 
     // Start is called before the first frame update
-    void Start()
-    {
-        //UIScrollList = new List<GameObject>();
-    }
+    //void Start()
+    //{
+    //    //UIScrollList = new List<GameObject>();
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
     public void UICamera(Vector3 pos)//UI移動用
     {
         //Debug.Log(UIScrollList.Count);
