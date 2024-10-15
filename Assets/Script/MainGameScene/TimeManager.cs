@@ -7,10 +7,7 @@ public class  TimeManager : MonoBehaviour
     private RectTransform RectTransform;
 
     [SerializeField] double time = 100;
-    [SerializeField] int addition_time = 10;
     public static double static_time;
-    double get_keytime = 0.5;
-    double input_time = 0;
     private double beforetime;
     private double aftertime;
 
