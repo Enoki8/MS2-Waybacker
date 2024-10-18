@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class scenechanger : MonoBehaviour   
-{  
-    [SerializeField] string Scene = "HighScoreScene";
-    // Start is called before the first frame update
+public class SceneChanger : MonoBehaviour
+{
+    [SerializeField] string Scene = "TitleScene";
+
     void Start()
     {
-        StartCoroutine(SceneChanger());
+        StartCoroutine(SceneChange());
     }
 
     // Update is called once per frame
 
-    public IEnumerator SceneChanger()
+    public IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(Scene);

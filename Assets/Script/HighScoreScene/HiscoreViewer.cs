@@ -8,6 +8,8 @@ public class HiscoreViewer : MonoBehaviour
     [SerializeField] GameObject Number_0;
     [SerializeField] GameObject Black;
     [SerializeField] SmoothDamp SmoothDamp;
+    [SerializeField] GameObject Score;
+    [SerializeField] GameObject Name;
     [SerializeField] private float transparency;
     private float _currentVelocity = 0;
 
@@ -42,6 +44,7 @@ public class HiscoreViewer : MonoBehaviour
                 Quaternion q = new Quaternion();
                 Vector2 pos = new Vector3(-4, (2f - (ii * 1.5f)));
                 newnum = Instantiate(Number_0, pos, q);
+                newnum.transform.parent = Score.transform;
 
                 SmoothDamp numloc;
                 SpriteRenderer sr;
@@ -65,6 +68,7 @@ public class HiscoreViewer : MonoBehaviour
                 Quaternion q = new Quaternion();
                 Vector2 pos = new Vector3(-4, (2f - (ii * 1.5f)));
                 newalp = Instantiate(Number_0, pos, q);
+                newalp.transform.parent = Name.transform;
 
                 SmoothDamp alploc;
                 SpriteRenderer sr;
