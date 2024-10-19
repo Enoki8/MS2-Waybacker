@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class KeyAttach : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int Pushed()
     {
-        
-    }
+        if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)) ||
+            (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
+        {
+            return 0;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Input.GetKey(KeyCode.D)) return 1;
+        if (Input.GetKey(KeyCode.A)) return 2;
+        if (Input.GetKey(KeyCode.S)) return 3;
+        if (Input.GetKey(KeyCode.W)) return 4;
+
+        return 0;
     }
 }

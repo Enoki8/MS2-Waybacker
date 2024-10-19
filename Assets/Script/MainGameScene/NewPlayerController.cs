@@ -7,6 +7,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] TimeManager timeManager;
     [SerializeField] GameObject newplayer;
+    [SerializeField] KeyAttach KeyAttach;
     private int thisflame;
     private bool thisflamecorrect;
     [SerializeField] int xzahyou;
@@ -40,7 +41,7 @@ public class NewPlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.R) == false)
             {
-                thisflame = Pushed();
+                thisflame = KeyAttach.Pushed();
                 if (thisflame != 0)
                 {
                     if (WallCheck(thisflame) != 0)
@@ -98,21 +99,6 @@ public class NewPlayerController : MonoBehaviour
 
     }
 
-    private int Pushed()
-    {
-        if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)) ||
-            (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
-        {
-            return 0;
-        }
-
-        if (Input.GetKey(KeyCode.D)) return 1;
-        if (Input.GetKey(KeyCode.A)) return 2;
-        if (Input.GetKey(KeyCode.S)) return 3;
-        if (Input.GetKey(KeyCode.W)) return 4;
-
-        return 0;
-    }
     private int WallCheck(int button)
     {
         if
