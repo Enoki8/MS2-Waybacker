@@ -6,13 +6,9 @@ public class HiscoreViewer : MonoBehaviour
 {
     [SerializeField] FontStore fontStore;
     [SerializeField] GameObject Number_0;
-    [SerializeField] GameObject Black;
     [SerializeField] SmoothDamp SmoothDamp;
     [SerializeField] GameObject Score;
     [SerializeField] GameObject Name;
-    [SerializeField] private float transparency;
-    private float _currentVelocity = 0;
-
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +21,7 @@ public class HiscoreViewer : MonoBehaviour
 
     private void Update()
     {
-            Black.GetComponent<SpriteRenderer>().color -= new Color(0,0,0,transparency);
+
     }   
 
     private void Showscore(int[] hiscores)
