@@ -5,11 +5,14 @@ using UnityEngine;
 public class PushAControll : MonoBehaviour
 {
     [SerializeField] SmoothDamp smoothDamp;
+    [SerializeField] GameObject Enoki;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         animator= GetComponent<Animator>();
+        spriteRenderer=Enoki.GetComponent<SpriteRenderer>();
         animator.SetBool("CompMove", false);
     }
 
@@ -19,6 +22,7 @@ public class PushAControll : MonoBehaviour
         if (smoothDamp.CompScroll)
         {
             animator.SetBool("CompMove", true);
+            spriteRenderer.enabled = true;
         }
     }
 }
