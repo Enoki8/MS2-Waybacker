@@ -1070,7 +1070,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1826790675}
   - component: {fileID: 1826790674}
-  - component: {fileID: 1826790673}
   m_Layer: 0
   m_Name: CanvasDirector
   m_TagString: Untagged
@@ -1078,18 +1077,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1826790673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826790672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211c8469000bf1b44bcedd59b3a16161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1826790674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1157,7 @@ MonoBehaviour:
   - {fileID: 1166186787}
   - {fileID: 210381567}
   - {fileID: 992053530}
+  movespeed: 3
 --- !u!1 &1168010349163015723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 20
   scenename: HighScoreScene
+  PUSHscenename: MainScene
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

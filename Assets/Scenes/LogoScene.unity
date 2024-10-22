@@ -310,8 +310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bce3484b05e2f4cbe995c34df38d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 20
+  delay: 4
   scenename: TitleScene
+  PUSHscenename: TitleScene
 --- !u!1 &1531455343939800129
 GameObject:
   m_ObjectHideFlags: 0

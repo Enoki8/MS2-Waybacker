@@ -10,6 +10,8 @@ public class FadeAnimation : MonoBehaviour
     [SerializeField] private float delay;
     private bool hasTriggeredFadeOut = false;
     [SerializeField] private string scenename;
+    [SerializeField] private string PUSHscenename;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +25,17 @@ public class FadeAnimation : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
 
-        if ((Input.anyKeyDown || timeElapsed >= delay) && !hasTriggeredFadeOut)
+        if ((Input.anyKeyDown ||timeElapsed >= delay) && !hasTriggeredFadeOut)
         {
+            if (Input.anyKey)
+            {
+                scenename = PUSHscenename;
+            }
             hasTriggeredFadeOut = true;
-            StartCoroutine(FadeOutAndLoadScene());
+            StartCoroutine(FadeOutAndLoadScene(scenename));
         }
     }
-    IEnumerator FadeOutAndLoadScene()
+    IEnumerator FadeOutAndLoadScene(string scenename)
     {
         animator.SetBool("Fadeinanim", false);
         animator.SetBool("Fadeoutanim", true);

@@ -5,7 +5,7 @@ public class WalkingFloat : MonoBehaviour
 {
     [SerializeField] List<GameObject> Floats;
     private List<bool> incamera;
-    private float movespeed = 0.008f;
+    [SerializeField] private float movespeed = 0.008f;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +42,11 @@ public class WalkingFloat : MonoBehaviour
             else
             {
                 Vector3 pos = Floats[i].transform.position;
+                float move=movespeed*Time.deltaTime;
                 switch (i)
                 {
                     case 0:
-                        pos.x = pos.x - movespeed;
+                        pos.x = pos.x - move;
                         Floats[0].transform.position = pos;
                         if (pos.x < -8)
                         {
@@ -53,7 +54,7 @@ public class WalkingFloat : MonoBehaviour
                         }
                         break;
                     case 1:
-                        pos.x = pos.x + movespeed;
+                        pos.x = pos.x + move;
                         Floats[1].transform.position = pos;
                         if (pos.x > 8)
                         {
@@ -61,7 +62,7 @@ public class WalkingFloat : MonoBehaviour
                         }
                         break;
                     case 2:
-                        pos.y = pos.y - movespeed;
+                        pos.y = pos.y - move;
                         Floats[2].transform.position = pos;
                         if (pos.y < -5.5f)
                         {
@@ -69,7 +70,7 @@ public class WalkingFloat : MonoBehaviour
                         }
                         break;
                     case 3:
-                        pos.y = pos.y + movespeed;
+                        pos.y = pos.y + move;
                         Floats[3].transform.position = pos;
                         if (pos.y > 5.5f)
                         {
