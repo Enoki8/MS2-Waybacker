@@ -2154,6 +2154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2114252185}
   - component: {fileID: 2114252186}
+  - component: {fileID: 2114252187}
   m_Layer: 0
   m_Name: GameOverDirector
   m_TagString: Untagged
@@ -2189,7 +2190,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   director: {fileID: 166847001}
-  CreateBlock: {fileID: 1306326715}
+  createBlock: {fileID: 1306326715}
+  dropBlock: {fileID: 2114252187}
+--- !u!114 &2114252187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114252184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab98507b274951f439cb5b3b35d44363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
