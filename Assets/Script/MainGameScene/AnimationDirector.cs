@@ -35,22 +35,34 @@ public class AnimationDirector : MonoBehaviour
 
                     break;
                 case 1:
+                    animator.SetBool("Left", false);
                     animator.SetBool("Right", true);
+                    animator.SetBool("Up", false);
+                    animator.SetBool("Down", false);
                     animator.SetBool("Push",true);
 
                     break;
                 case 2:
                     animator.SetBool("Left", true);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Up", false);
+                    animator.SetBool("Down", false);
                     animator.SetBool("Push", true);
 
                     break;
                 case 3:
+                    animator.SetBool("Left", false);
+                    animator.SetBool("Right", false);
+                    animator.SetBool("Up", false);
                     animator.SetBool("Down", true);
                     animator.SetBool("Push", true);
 
                     break;
                 case 4:
+                    animator.SetBool("Left", false);
+                    animator.SetBool("Right", false);
                     animator.SetBool("Up", true);
+                    animator.SetBool("Down", false);
                     animator.SetBool("Push", true);
                     break;
             }

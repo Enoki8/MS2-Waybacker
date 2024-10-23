@@ -5,6 +5,7 @@ public class Director : MonoBehaviour
 {
     [SerializeField] PlayerController player;
     [SerializeField] CreateBlock createblock;
+    public bool getgameover = false;
 
     // Start is called before the first frame update
     void Start()

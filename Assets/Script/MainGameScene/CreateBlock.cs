@@ -3,6 +3,8 @@ using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] Director director;
+
     [SerializeField] GameObject sand;
     [SerializeField] GameObject mine;
     [SerializeField] PlayerController player;
@@ -53,7 +55,7 @@ public class CreateBlock : MonoBehaviour
                 if (zokusei == -1)
                 {
                     sr.sprite = bomb;
-                    Debug.Log("Gameover!");
+                    director.getgameover = true;
                 }
                 else
                 {
