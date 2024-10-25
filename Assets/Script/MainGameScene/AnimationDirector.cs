@@ -74,10 +74,17 @@ public class AnimationDirector : MonoBehaviour
             animator.SetBool("Up", false);
             animator.SetBool("Down", false);
             animator.SetBool("Push", false);
-
-
         }
         beforevector = place.transform.position;
+    }
 
+    public void FallingStart()
+    {
+        animator.SetBool("Left", false);
+        animator.SetBool("Right", false);
+        animator.SetBool("Up", false);
+        animator.SetBool("Down", false);
+        animator.SetBool("Push", true);
+        animator.SetBool("Falling", true);
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Director : MonoBehaviour
 {
-    [SerializeField] PlayerController player;
     [SerializeField] CreateBlock createblock;
     public bool getgameover = false;
 
