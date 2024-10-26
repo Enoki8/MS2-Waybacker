@@ -9,10 +9,13 @@ public class GameOverDirector : MonoBehaviour
     [SerializeField] Director director;
     [SerializeField] CreateBlock createBlock;
     [SerializeField] DropBlock dropBlock;
+    [SerializeField] AnimationDirector animationDirector;
+
     [SerializeField] GameObject Player;
     [SerializeField] GameObject NewPlayer;
     [SerializeField] GameObject timeManager;
-    [SerializeField] AnimationDirector animationDirector;
+    [SerializeField] GameObject Gameover;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,10 @@ public class GameOverDirector : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         NewPlayer.AddComponent<DropBlock>();
         yield return new WaitForSeconds(2f);
+        SpriteRenderer spriteRenderer = Gameover.GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = true;
+        StaticNumberStore.thisgamescore = ScoreManager.GameScore;
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("GameOverScene");
     }
 }

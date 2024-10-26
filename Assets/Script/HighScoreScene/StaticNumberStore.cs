@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StaticNumberStore : MonoBehaviour
 {
-    public static int[] hiscores = new int[5] {50000,40000,30000,20000,10000};
+    public static int thisgamescore;
+    public static int[] hiscores = new int[5] {5000,4000,3000,2000,1000};
     public static int[,] hiscorename = new int[5, 3]{
     {4,13,10},
     {8,13,19},

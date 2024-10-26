@@ -7,7 +7,6 @@ public class CreateBlock : MonoBehaviour
 
     [SerializeField] GameObject sand;
     [SerializeField] GameObject mine;
-    [SerializeField] PlayerController player;
     [SerializeField] GameObject blocksclone;
     public Sprite[] hints;
     public Sprite flag;
