@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +14,6 @@ public class ScoreSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StaticNumberStore.thisgamescore = 50000;
         ScoreSetting();
         ChangeRanking();
     }
@@ -35,31 +30,28 @@ public class ScoreSet : MonoBehaviour
         {
             SpriteRenderer sr;
             sr = Scores[i].GetComponent<SpriteRenderer>();
-            sr.sprite =fontStore.number[int.Parse(reviewscore.Substring(i, 1))];
+            sr.sprite = fontStore.number[int.Parse(reviewscore.Substring(i, 1))];
         }
     }
     private void ChangeRanking()
     {
-        int[]hiscores=new int[6];
+        int[] hiscores = new int[6];
         for (int i = 0; i < 5; i++)
         {
-            hiscores[i]=StaticNumberStore.hiscores[i];
+            hiscores[i] = StaticNumberStore.hiscores[i];
         }
-        hiscores[5]=StaticNumberStore.thisgamescore;
-        int[] sortscores = hiscores.OrderByDescending(n=>n).ToArray();
-        for (int i = 0; i < sortscores.Length; i++)
+        hiscores[5] = StaticNumberStore.thisgamescore;
+        int[] sortscores = hiscores.OrderByDescending(n => n).ToArray();
+
+        if (sortscores[5] == StaticNumberStore.thisgamescore)
         {
-            Debug.Log(sortscores[i]);
-        }
-        if (sortscores[5]==StaticNumberStore.thisgamescore)
-        {
-            Debug.Log("same");
             ViewThankyou.SetChildrenActive(true);
             StartCoroutine(SceneChange());
         }
         else
         {
-            StartCoroutine (PutYourName());
+            StaticNumberStore.hiscores = sortscores;
+            StartCoroutine(PutYourName());
         }
         IEnumerator SceneChange()
         {
@@ -72,7 +64,7 @@ public class ScoreSet : MonoBehaviour
             yield return new WaitForSeconds(3f);
             ViewRankin.SetChildrenActive(false);
             for (int i = 0; i < Scores.Count; i++)
-            { 
+            {
                 SmoothDamp smoothDamp = Scores[i].GetComponent<SmoothDamp>();
                 Vector2 pos = new Vector2(3, 0);
                 smoothDamp.target += pos;

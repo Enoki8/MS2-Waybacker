@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticNumberStore : MonoBehaviour
 {
-    public static int thisgamescore;
+    [SerializeField] public static int thisgamescore;
     public static int[] hiscores = new int[5] {5000,4000,3000,2000,1000};
     public static int[,] hiscorename = new int[5, 3]{
     {4,13,10},

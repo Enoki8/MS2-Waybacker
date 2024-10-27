@@ -21,9 +21,9 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.O))
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 cursorLotate = LotateCheck();
                 //Debug.Log($"x;{cursorLotate[0]} y;{cursorLotate[1]}");
@@ -35,7 +35,7 @@ public class CursorController : MonoBehaviour
                 Cursormove(thisflame);
             }
         }
-        if (Input.GetKey(KeyCode.R) == false)
+        if (Input.GetKey(KeyCode.O) == false)
         {
             Renderer.enabled = false;
         }
@@ -63,7 +63,7 @@ public class CursorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A)) return 2;
         if (Input.GetKeyDown(KeyCode.S)) return 3;
         if (Input.GetKeyDown(KeyCode.W)) return 4;
-        if (Input.GetKeyDown(KeyCode.Space)) return 5;
+        if (Input.GetKeyDown(KeyCode.P)) return 5;
 
         return 0;
     }

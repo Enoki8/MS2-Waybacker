@@ -1091,6 +1091,7 @@ MonoBehaviour:
   shrinkSpeed: 0.5
   Bar_1: {fileID: 1267342117}
   UIViewer: {fileID: 1557883920}
+  Director: {fileID: 166847001}
 --- !u!212 &1049746637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1596,7 +1597,6 @@ MonoBehaviour:
   director: {fileID: 166847001}
   sand: {fileID: 3129387565385628071, guid: 056ff6607a99d84418c5ccc0068f836b, type: 3}
   mine: {fileID: 3129387565385628071, guid: 056ff6607a99d84418c5ccc0068f836b, type: 3}
-  player: {fileID: 0}
   blocksclone: {fileID: 1563505738}
   hints:
   - {fileID: 21300000, guid: f0f875c4e5dce08449bf198b46207ff9, type: 3}

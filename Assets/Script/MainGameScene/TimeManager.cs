@@ -15,6 +15,7 @@ public class  TimeManager : MonoBehaviour
 
     [SerializeField] GameObject Bar_1;
     [SerializeField] UIViewer UIViewer;
+    [SerializeField] Director Director;
     
     void Start()
     {
@@ -37,6 +38,7 @@ public class  TimeManager : MonoBehaviour
         else
         {
             Debug.Log("おわり");
+            Director.getgameover = true;
         }
     }
     //秒数を増やす処理
