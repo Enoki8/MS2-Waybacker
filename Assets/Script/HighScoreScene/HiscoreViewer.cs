@@ -13,6 +13,8 @@ public class HiscoreViewer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ResetGameData();
+
         int[] hiscores=StaticNumberStore.ReturnHiscores();
         Showscore(hiscores);
         int[,] hiscorename=StaticNumberStore.ReturnHiscoresName();
@@ -77,5 +79,9 @@ public class HiscoreViewer : MonoBehaviour
                 alploc.target = target;
             }
         }
+    }
+    private void ResetGameData()
+    {
+        StaticNumberStore.thisgamescore = 0;
     }
 }

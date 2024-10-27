@@ -28,7 +28,7 @@ public class NewPlayerController : MonoBehaviour
     {
         PlayerGrids = new int[2];
         Destroyblock = new int[2];
-        transform.position = new Vector3(-6, 1, -1);
+        transform.position = new Vector3(-2, 0, -1);
         newplayer.transform.position = transform.position;
         thisflame = 0;
     }
@@ -117,7 +117,7 @@ public class NewPlayerController : MonoBehaviour
             return 0;
         }
 
-        if ((scoreManager.GameSteps - 4 >= -(transform.position.y)) && button == 4)
+        if ((scoreManager.GameSteps - 5 >= -(transform.position.y)) && button == 4)
         {
             return 0;
         }

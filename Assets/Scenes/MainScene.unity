@@ -556,10 +556,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc59c26c7aedfd439592f518df0a6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 836295072}
-  Player: {fileID: 0}
+  player: {fileID: 774589044}
   scoreManager: {fileID: 986934356}
   viewer: {fileID: 1557883920}
+  director: {fileID: 166847001}
   camera: {fileID: 519420028}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -2240,6 +2240,7 @@ MonoBehaviour:
   NewPlayer: {fileID: 774589044}
   timeManager: {fileID: 1049746634}
   Gameover: {fileID: 1175722950}
+  setgameover: 0
 --- !u!114 &2114252187
 MonoBehaviour:
   m_ObjectHideFlags: 0

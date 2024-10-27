@@ -15,6 +15,7 @@ public class GameOverDirector : MonoBehaviour
     [SerializeField] GameObject NewPlayer;
     [SerializeField] GameObject timeManager;
     [SerializeField] GameObject Gameover;
+    [SerializeField] private bool setgameover = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,13 @@ public class GameOverDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (director.getgameover)
+        if (director.getgameover && setgameover==false)
         {
             Debug.Log("Gameover");
             var comp = Player.GetComponent<NewPlayerController>();
             Destroy(comp);
             StartCoroutine(TakeScripts());
-            director.getgameover = false;
+            setgameover = true;
         }
     }
 

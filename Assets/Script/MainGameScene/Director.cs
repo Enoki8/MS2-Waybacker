@@ -14,6 +14,14 @@ public class Director : MonoBehaviour
         {
             createblock.Createrow();
         }
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 1; j < 4; j++)
+            {
+                createblock.Destroyblock(j, i);
+
+            }
+        }
     }
     // Update is called once per frame
     //void Update()
