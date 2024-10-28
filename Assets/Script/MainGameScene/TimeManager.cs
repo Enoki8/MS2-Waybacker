@@ -6,7 +6,7 @@ public class  TimeManager : MonoBehaviour
 {
     private RectTransform RectTransform;
 
-    [SerializeField] double time = 100;
+    [SerializeField] double time;
     public static double static_time;
     private double beforetime;
     private double aftertime;
@@ -31,14 +31,17 @@ public class  TimeManager : MonoBehaviour
         {
             time -= Time.deltaTime;
             Vector2 pos = transform.position;
-            float newpos = (float)((Time.deltaTime) * 0.1);
+            float newpos = (float)((Time.deltaTime) * 10/static_time);
             pos.y -= newpos;
             transform.position = pos;
         }
         else
         {
-            Debug.Log("おわり");
-            Director.getgameover = true;
+            if (!Director.getgameover)
+            {
+                Debug.Log("おわり");
+                Director.getgameover = true;
+            }
         }
     }
     //秒数を増やす処理

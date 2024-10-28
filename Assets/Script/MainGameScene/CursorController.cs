@@ -95,8 +95,12 @@ public class CursorController : MonoBehaviour
             case 4:
                 if (cursorLotate[1] >= -(Mathf.RoundToInt(NewPlayer.transform.position.y) + 2))
                 {
-                    move = new Vector3(0, 1, 0);
-                    cursorLotate[1]--;
+                    if (cursorLotate[1] != 0)
+                    {
+                        move = new Vector3(0, 1, 0);
+                        cursorLotate[1]--;
+                    }
+
                 }
                 break;
             case 5:

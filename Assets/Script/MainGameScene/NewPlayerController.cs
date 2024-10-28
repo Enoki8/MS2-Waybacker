@@ -39,7 +39,7 @@ public class NewPlayerController : MonoBehaviour
         thisflame = 0;
         if (downslide == 0)
         {
-            if (Input.GetKey(KeyCode.R) == false)
+            if (Input.GetKey(KeyCode.O) == false)
             {
                 thisflame = KeyAttach.Pushed();
                 if (thisflame != 0)
@@ -116,7 +116,13 @@ public class NewPlayerController : MonoBehaviour
             transform.position = pos;
             return 0;
         }
-
+        if (transform.position.y>=0 && button == 4)
+        {
+            Vector3 pos = transform.position;
+            pos.y = 0;
+            transform.position = pos;
+            return 0;
+        }
         if ((scoreManager.GameSteps - 5 >= -(transform.position.y)) && button == 4)
         {
             return 0;
@@ -262,6 +268,7 @@ public class NewPlayerController : MonoBehaviour
         if (scoreManager.GameSteps < -(Mathf.RoundToInt(playerPos.y) - 1))
         {
             scoreManager.MaterUp();
+            scoreManager.ScoreUp(10);
             createblock.Createrow();
         }
     }

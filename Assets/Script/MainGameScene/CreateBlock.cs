@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CreateBlock : MonoBehaviour
     public Sprite bomb;
     public Sprite nullblock;
     public Sprite null2;
+    [SerializeField]private int baseChance;
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
@@ -59,7 +61,7 @@ public class CreateBlock : MonoBehaviour
                 else
                 {
                     sr.sprite = hints[zokusei];
-                    scoreManager.ScoreUp(zokusei * 100);
+                    scoreManager.ScoreUp((zokusei*zokusei) * 100);
                 }
             }
         }
@@ -96,28 +98,11 @@ public class CreateBlock : MonoBehaviour
             Vector2 placePosition = new Vector2(row - 6, column * (-1) + 1);
             Quaternion q = new Quaternion();
             GameObject block;
-            HitCube hitcube;
-            LandMine landmine;
-            int rnd = Random.Range(0, 20);
-            if (rnd == 0)
-            {
-                block = Instantiate(mine, placePosition, q);
-                landmine = block.AddComponent<LandMine>();
-                landmine.bombcolumn = column;
-                landmine.bombrow = row;
-                landmine.BombGrid = BombGrid;
-                BombGrid[column][row] = -1;
-                //AroundSand(column, row);
-            }
-            else
-            {
-                block = Instantiate(sand, placePosition, q);
-                hitcube = block.AddComponent<HitCube>();
-                hitcube.cubecolumn = column;
-                hitcube.cuberow = row;
-                hitcube.Grid = Grid;
-                hitcube.BombGrid = BombGrid;
-            }
+            block = Instantiate(sand, placePosition, q);
+
+            CreateBomb(column, row);
+
+            
             Row.Add(block);
             block.transform.parent = blocksclone.transform;
             BombRow.Add(0);
@@ -176,17 +161,84 @@ public class CreateBlock : MonoBehaviour
             }
         }
     }
+
+    private int SarchBomb(int column,int row)
+    {
+        int count = 0;
+        for (int j = -1; j <= 1; j++)
+        {
+            for (int i = -1; i <= 1; i++)
+            {
+                if (row + j == -1 || row + j == 10)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (j == 0 && i == 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if(BombGrid[column + i][row + j] == -1)
+                        {
+                            count++;
+                        }
+                        //Debug.Log($"column:{column + i} row:{row + j} に追加");
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+
+    private void CreateBomb(int column,int row)
+    {
+        if (Grid.Count > 4)
+        {
+            //int adjustedChance = Mathf.Max(1, baseChance - scoreManager.GameSteps / 20);
+            //int surroundingBombs = SarchBomb(column, row);
+            //int rnd;
+            //if (surroundingBombs == 0)
+            //{
+            //    rnd = Random.Range(0, baseChance);
+
+            //}
+            //else 
+            //{
+            //    rnd = Random.Range(0, Mathf.Max(1, adjustedChance - surroundingBombs));
+
+            //}
+            int rnd = Random.Range(0, baseChance);
+            if (rnd == 0)
+            {
+                BombGrid[column][row] = -1;
+                //AroundSand(column, row);
+            }
+
+        }
+
+    }
+
+
+
     public void CreateFlags(int row, int column)
     {
-        SpriteRenderer sr;
-        sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-        if (sr.sprite.name == "Number_null")
+        if (Grid[column - destroycolumn][row] != null)
         {
-            sr.sprite = flag;
+            SpriteRenderer sr;
+            sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+            if (sr.sprite.name == "Number_null")
+            {
+                sr.sprite = flag;
+            }
+            else if (sr.sprite.name == "Flag")
+            {
+                sr.sprite = nullblock;
+            }
         }
-        else if (sr.sprite.name == "Flag")
-        {
-            sr.sprite = nullblock;
-        }
+
     }
 }
