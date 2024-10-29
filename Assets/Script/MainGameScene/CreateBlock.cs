@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class CreateBlock : MonoBehaviour
     public Sprite bomb;
     public Sprite nullblock;
     public Sprite null2;
-    [SerializeField]private int baseChance;
+    [SerializeField] private int baseChance;
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
@@ -23,6 +22,8 @@ public class CreateBlock : MonoBehaviour
     public int destroycolumn = 0;
     public int column = 0;
     public int row = 0;
+
+    private bool beforebomb = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class CreateBlock : MonoBehaviour
                 else
                 {
                     sr.sprite = hints[zokusei];
-                    scoreManager.ScoreUp((zokusei*zokusei) * 100);
+                    scoreManager.ScoreUp((zokusei * zokusei) * 100);
                 }
             }
         }
@@ -102,7 +103,6 @@ public class CreateBlock : MonoBehaviour
 
             CreateBomb(column, row);
 
-            
             Row.Add(block);
             block.transform.parent = blocksclone.transform;
             BombRow.Add(0);
@@ -162,60 +162,30 @@ public class CreateBlock : MonoBehaviour
         }
     }
 
-    private int SarchBomb(int column,int row)
-    {
-        int count = 0;
-        for (int j = -1; j <= 1; j++)
-        {
-            for (int i = -1; i <= 1; i++)
-            {
-                if (row + j == -1 || row + j == 10)
-                {
-                    continue;
-                }
-                else
-                {
-                    if (j == 0 && i == 0)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        if(BombGrid[column + i][row + j] == -1)
-                        {
-                            count++;
-                        }
-                        //Debug.Log($"column:{column + i} row:{row + j} に追加");
-                    }
-                }
-            }
-        }
-        return count;
-    }
-
-
-    private void CreateBomb(int column,int row)
+    private void CreateBomb(int column, int row)
     {
         if (Grid.Count > 4)
         {
-            //int adjustedChance = Mathf.Max(1, baseChance - scoreManager.GameSteps / 20);
-            //int surroundingBombs = SarchBomb(column, row);
-            //int rnd;
-            //if (surroundingBombs == 0)
-            //{
-            //    rnd = Random.Range(0, baseChance);
+            int rnd;
+            if (beforebomb)
+            {
+                rnd = Random.Range(0, 5);
+            }
+            else
+            {
+                int afterChance = Mathf.Min(5, (int)(baseChance - (((10 + scoreManager.GameSteps) / 30)) + 1));
+                rnd = Random.Range(0, afterChance);
 
-            //}
-            //else 
-            //{
-            //    rnd = Random.Range(0, Mathf.Max(1, adjustedChance - surroundingBombs));
-
-            //}
-            int rnd = Random.Range(0, baseChance);
+            }
             if (rnd == 0)
             {
                 BombGrid[column][row] = -1;
+                beforebomb = true;
                 //AroundSand(column, row);
+            }
+            else
+            {
+                beforebomb = false;
             }
 
         }
