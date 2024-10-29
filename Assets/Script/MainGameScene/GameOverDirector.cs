@@ -39,6 +39,7 @@ public class GameOverDirector : MonoBehaviour
     IEnumerator TakeScripts()
     {
         yield return new WaitForSeconds(1.5f);
+
         for (int i = createBlock.Grid.Count - 1; i > 0; i--)
         {
             List<GameObject> grids = createBlock.Grid[i];
@@ -54,17 +55,15 @@ public class GameOverDirector : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(0.05f);
-
         }
-        yield return new WaitForSeconds(0.5f);
         animationDirector.FallingStart();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         NewPlayer.AddComponent<DropBlock>();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         SpriteRenderer spriteRenderer = Gameover.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
         StaticNumberStore.thisgamescore = ScoreManager.GameScore;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("GameOverScene");
     }
 }

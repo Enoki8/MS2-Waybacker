@@ -51,9 +51,9 @@ public class  TimeManager : MonoBehaviour
 
         //Debug.Log($"{addition_time}Time_Addition!!!!");
         time += addition_time;
-        if (time > 100) 
+        if (time > static_time) 
         {
-            time = 100;
+            time = static_time;
         }
         aftertime = (float)time-beforetime;
         Vector2 pos = transform.position;

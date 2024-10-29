@@ -22,7 +22,7 @@ public class CreateBlock : MonoBehaviour
     [SerializeField] private int worstChance;
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
-    List<List<int>> BombGrid = new List<List<int>>();
+    public List<List<int>> BombGrid = new List<List<int>>();
     public List<List<bool>> boolsGrid = new List<List<bool>>();
     public int destroycolumn = 0;
     public int column = 0;
@@ -63,7 +63,7 @@ public class CreateBlock : MonoBehaviour
                 if (zokusei == -1)
                 {
                     sr.sprite = bomb;
-                    //director.getgameover = true;
+                    director.getgameover = true;
                 }
                 else
                 {
