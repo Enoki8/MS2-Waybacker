@@ -506,9 +506,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.03808111
+    y: 0
     width: 1
-    height: 0.9238378
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea492ff834b18b940b9d86f874f53809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 100
+  time: 80
   shrinkSpeed: 0.5
   Bar_1: {fileID: 1267342117}
   UIViewer: {fileID: 1557883920}
@@ -1610,7 +1610,9 @@ MonoBehaviour:
   bomb: {fileID: 21300000, guid: 2045f5506e7725344a149c998a8110c2, type: 3}
   nullblock: {fileID: 21300000, guid: a3abb828e18448a45aebefe6e3562e53, type: 3}
   null2: {fileID: 21300000, guid: c5ba81b6fceee5b46ab2b764b7566f54, type: 3}
-  baseChance: 20
+  baseChance: 12
+  afterChance: 0
+  worstChance: 5
   destroycolumn: 0
   column: 0
   row: 0

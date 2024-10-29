@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
@@ -8,22 +9,27 @@ public class CreateBlock : MonoBehaviour
     [SerializeField] GameObject sand;
     [SerializeField] GameObject mine;
     [SerializeField] GameObject blocksclone;
+
+
     public Sprite[] hints;
     public Sprite flag;
     public Sprite bomb;
     public Sprite nullblock;
     public Sprite null2;
+    
     [SerializeField] private int baseChance;
+    [SerializeField] private int afterChance;
+    [SerializeField] private int worstChance;
 
     public List<List<GameObject>> Grid = new List<List<GameObject>>();
     List<List<int>> BombGrid = new List<List<int>>();
     public List<List<bool>> boolsGrid = new List<List<bool>>();
-
     public int destroycolumn = 0;
     public int column = 0;
     public int row = 0;
-
     private bool beforebomb = false;
+    private int createdbomb = 0;
+    private int waitedtime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +63,7 @@ public class CreateBlock : MonoBehaviour
                 if (zokusei == -1)
                 {
                     sr.sprite = bomb;
-                    director.getgameover = true;
+                    //director.getgameover = true;
                 }
                 else
                 {
@@ -100,12 +106,12 @@ public class CreateBlock : MonoBehaviour
             Quaternion q = new Quaternion();
             GameObject block;
             block = Instantiate(sand, placePosition, q);
+            BombRow.Add(0);
 
             CreateBomb(column, row);
 
             Row.Add(block);
             block.transform.parent = blocksclone.transform;
-            BombRow.Add(0);
             boolRow.Add(false);
         }
         Grid.Add(Row);
@@ -164,32 +170,45 @@ public class CreateBlock : MonoBehaviour
 
     private void CreateBomb(int column, int row)
     {
-        if (Grid.Count > 4)
+        if (waitedtime == 0)
         {
-            int rnd;
-            if (beforebomb)
+            if (Grid.Count > 4)
             {
-                rnd = Random.Range(0, 5);
-            }
-            else
-            {
-                int afterChance = Mathf.Min(5, (int)(baseChance - (((10 + scoreManager.GameSteps) / 30)) + 1));
-                rnd = Random.Range(0, afterChance);
+                int rnd;
+                if (beforebomb)
+                {
+                    rnd = Random.Range(0, worstChance);
+                }
+                else
+                {
+                    afterChance = Mathf.Max(worstChance,(int)(baseChance - (((30 + scoreManager.GameSteps) / 30)) + 1));
+                    rnd = Random.Range(0, afterChance);
+
+                }
+                if (rnd == 0)
+                {
+                    //Debug.Log(createdbomb);
+                    BombGrid[column][row] = -1;
+                    beforebomb = true;
+                    createdbomb++;
+                    if (createdbomb > 6+Random.Range(0,3))
+                    {
+                        createdbomb = 0;
+                        waitedtime = 11+Random.Range(0,10);
+                    }
+                    //AroundSand(column, row);
+                }
+                else
+                {
+                    beforebomb = false;
+                }
 
             }
-            if (rnd == 0)
-            {
-                BombGrid[column][row] = -1;
-                beforebomb = true;
-                //AroundSand(column, row);
-            }
-            else
-            {
-                beforebomb = false;
-            }
-
         }
-
+        else
+        {
+            waitedtime--;
+        }
     }
 
 
