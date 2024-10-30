@@ -506,9 +506,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.10479042
     width: 1
-    height: 1
+    height: 0.79041916
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   null2: {fileID: 21300000, guid: c5ba81b6fceee5b46ab2b764b7566f54, type: 3}
   baseChance: 12
   afterChance: 0
-  worstChance: 5
+  worstChance: 6
   destroycolumn: 0
   column: 0
   row: 0
@@ -2190,6 +2190,7 @@ MonoBehaviour:
   NewPlayerController: {fileID: 836295078}
   createBlock: {fileID: 1306326715}
   Flag: {fileID: 7477655980380852654, guid: 4c241857ea5e6474a93624cf32fd8e60, type: 3}
+  KeyAttach: {fileID: 346539172}
 --- !u!1 &2114252184
 GameObject:
   m_ObjectHideFlags: 0

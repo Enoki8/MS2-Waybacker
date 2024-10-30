@@ -39,7 +39,7 @@ public class NewPlayerController : MonoBehaviour
         thisflame = 0;
         if (downslide == 0)
         {
-            if (Input.GetKey(KeyCode.O) == false)
+            if (!KeyAttach.RetrurnKey("B"))
             {
                 thisflame = KeyAttach.Pushed();
                 if (thisflame != 0)
@@ -52,7 +52,7 @@ public class NewPlayerController : MonoBehaviour
                         {
                             if (createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                             {
-                                if (Input.GetKey(KeyCode.P))
+                                if (KeyAttach.RetrurnKey("A"))
                                 {
                                     //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
                                     createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);

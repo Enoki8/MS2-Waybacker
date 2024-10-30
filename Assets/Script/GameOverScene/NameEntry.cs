@@ -35,7 +35,7 @@ public class NameEntry : MonoBehaviour
             {
                 ViewAlps(Posset());
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (KeyAttach.RetrurnKeyDown("A"))
             {
                 Choose();
                 entryname[choosing] = position;
@@ -59,17 +59,14 @@ public class NameEntry : MonoBehaviour
     }
     private int[] Posset()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        switch (KeyAttach.PushedDown())
         {
-            position = position - 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            position = position + 1;
-            if (position > 26)
-            {
-                position = 0;
-            }
+            case 3:
+                position = position + 1;
+                break;
+            case 4:
+                position = position - 1;
+                break;
         }
         position = Replace(position);
 

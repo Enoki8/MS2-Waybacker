@@ -1,6 +1,4 @@
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
-using static UnityEditor.PlayerSettings;
 
 public class CursorController : MonoBehaviour
 {
@@ -9,6 +7,8 @@ public class CursorController : MonoBehaviour
     [SerializeField] NewPlayerController NewPlayerController;
     [SerializeField] CreateBlock createBlock;
     [SerializeField] GameObject Flag;
+    [SerializeField] KeyAttach KeyAttach;
+
     private int[] cursorLotate = new int[2];
     private bool[] flaglotate = new bool[2];
     private int thisflame;
@@ -21,18 +21,23 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.O))
+        if (KeyAttach.RetrurnKey("B"))
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (KeyAttach.RetrurnKeyDown("B"))
             {
                 cursorLotate = LotateCheck();
                 //Debug.Log($"x;{cursorLotate[0]} y;{cursorLotate[1]}");
                 Renderer.enabled = true;
             }
-            thisflame = Pushed();
+            thisflame = KeyAttach.PushedDown();
             if (thisflame != 0)
             {
                 Cursormove(thisflame);
+
+            }
+            if (KeyAttach.RetrurnKeyDown("A"))
+            {
+                InsertFlag();
             }
         }
         if (Input.GetKey(KeyCode.O) == false)
@@ -51,29 +56,14 @@ public class CursorController : MonoBehaviour
         return lotate;
     }
 
-    private int Pushed()
-    {
-        if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)) ||
-            (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)))
-        {
-            return 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D)) return 1;
-        if (Input.GetKeyDown(KeyCode.A)) return 2;
-        if (Input.GetKeyDown(KeyCode.S)) return 3;
-        if (Input.GetKeyDown(KeyCode.W)) return 4;
-        if (Input.GetKeyDown(KeyCode.P)) return 5;
-
-        return 0;
-    }
     private void Cursormove(int button)
     {
         Vector3 move = Vector3.zero;
         switch (button)
         {
             case 1:
-                if (cursorLotate[0]< 9){
+                if (cursorLotate[0] < 9)
+                {
                     move = new Vector3(1, 0, 0);
                     cursorLotate[0]++;
                 }
@@ -86,31 +76,27 @@ public class CursorController : MonoBehaviour
                 }
                 break;
             case 3:
-                if (cursorLotate[1]<= -(Mathf.RoundToInt(NewPlayer.transform.position.y)-4))
+                if (cursorLotate[1] <= -(Mathf.RoundToInt(NewPlayer.transform.position.y) - 3))
                 {
                     move = new Vector3(0, -1, 0);
                     cursorLotate[1]++;
                 }
                 break;
             case 4:
-                if (cursorLotate[1] >= -(Mathf.RoundToInt(NewPlayer.transform.position.y) + 2))
+                if (cursorLotate[1] >= -(Mathf.RoundToInt(NewPlayer.transform.position.y) + 3))
                 {
                     if (cursorLotate[1] != 0)
                     {
                         move = new Vector3(0, 1, 0);
                         cursorLotate[1]--;
                     }
-
                 }
-                break;
-            case 5:
-                InsertFlag();
                 break;
         }
         transform.position += (move);
     }
     private void InsertFlag()
     {
-        createBlock.CreateFlags(cursorLotate[0], cursorLotate[1]+1);
+        createBlock.CreateFlags(cursorLotate[0], cursorLotate[1] + 1);
     }
 }

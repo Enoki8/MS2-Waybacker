@@ -57,8 +57,8 @@ public class  TimeManager : MonoBehaviour
         }
         aftertime = (float)time-beforetime;
         Vector2 pos = transform.position;
-        float newpos = -(float)((aftertime) * 0.1);
-        pos.y -= newpos;
+        float newpos = (float)((aftertime) * 10 / static_time);
+        pos.y += newpos;
         transform.position = pos;
     }
 }
