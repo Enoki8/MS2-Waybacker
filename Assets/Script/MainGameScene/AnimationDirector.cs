@@ -21,59 +21,45 @@ public class AnimationDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int button = keyAttach.Pushed();
+        switch (button)
+        {
+            case 1:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", true);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", false);
+
+                break;
+            case 2:
+                animator.SetBool("Left", true);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", false);
+
+                break;
+            case 3:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Down", true);
+
+                break;
+            case 4:
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", true);
+                animator.SetBool("Down", false);
+                break;
+        }
         if (beforevector != place.transform.position)
         {
-            int button = keyAttach.Pushed();
-            switch (button)
-            {
-                case 0:
-                    animator.SetBool("Left", false);
-                    animator.SetBool("Right", false);
-                    animator.SetBool("Up", false);
-                    animator.SetBool("Down", false);
-                    animator.SetBool("Push", false);
 
-                    break;
-                case 1:
-                    animator.SetBool("Left", false);
-                    animator.SetBool("Right", true);
-                    animator.SetBool("Up", false);
-                    animator.SetBool("Down", false);
-                    animator.SetBool("Push",true);
-
-                    break;
-                case 2:
-                    animator.SetBool("Left", true);
-                    animator.SetBool("Right", false);
-                    animator.SetBool("Up", false);
-                    animator.SetBool("Down", false);
-                    animator.SetBool("Push", true);
-
-                    break;
-                case 3:
-                    animator.SetBool("Left", false);
-                    animator.SetBool("Right", false);
-                    animator.SetBool("Up", false);
-                    animator.SetBool("Down", true);
-                    animator.SetBool("Push", true);
-
-                    break;
-                case 4:
-                    animator.SetBool("Left", false);
-                    animator.SetBool("Right", false);
-                    animator.SetBool("Up", true);
-                    animator.SetBool("Down", false);
-                    animator.SetBool("Push", true);
-                    break;
-            }
+            animator.SetBool("Walking", true);
         }
         else
         {
-            animator.SetBool("Left",false);
-            animator.SetBool("Right", false);
-            animator.SetBool("Up", false);
-            animator.SetBool("Down", false);
-            animator.SetBool("Push", false);
+            animator.SetBool("Walking", false);
         }
         beforevector = place.transform.position;
     }

@@ -506,9 +506,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.10479042
+    y: 0
     width: 1
-    height: 0.79041916
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -805,7 +805,7 @@ MonoBehaviour:
   walkingspeed: 6
   PlayerGrids: 
   Destroyblock: 
-  stopflameset: 20
+  stopflameset: 30
   uplimit: 0
 --- !u!1 &897814514
 GameObject:
