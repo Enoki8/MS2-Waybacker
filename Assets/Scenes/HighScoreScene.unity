@@ -1097,9 +1097,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.16010854
     y: 0
-    width: 1
+    width: 0.6797829
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
-  scenename: LogoScene
+  scenename: HowToScene
   PUSHscenename: TitleScene
 --- !u!222 &1304374565487954886
 CanvasRenderer:

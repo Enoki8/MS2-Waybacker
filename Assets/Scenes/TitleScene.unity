@@ -422,6 +422,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451724479}
+  - component: {fileID: 451724481}
+  - component: {fileID: 451724480}
   m_Layer: 0
   m_Name: Director
   m_TagString: Untagged
@@ -445,6 +447,31 @@ Transform:
   - {fileID: 1826790675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451724480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451724478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e9ae114cfebd547ab8fc484345c4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &451724481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451724478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211c8469000bf1b44bcedd59b3a16161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyAttach: {fileID: 451724480}
 --- !u!1 &992053530
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,9 +738,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.07999998
+    x: 0.16010854
     y: 0
-    width: 0.84000003
+    width: 0.6797829
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1104,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211c8469000bf1b44bcedd59b3a16161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyAttach: {fileID: 451724480}
 --- !u!4 &1826790675
 Transform:
   m_ObjectHideFlags: 0
@@ -1358,7 +1386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 20
   scenename: HighScoreScene
-  PUSHscenename: MainScene
+  PUSHscenename: HowToScene
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
