@@ -14,8 +14,6 @@ public class ScoreSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StaticList.ingame = false;
-
         ScoreSetting();
         ChangeRanking();
     }

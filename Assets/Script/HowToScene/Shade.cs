@@ -17,9 +17,13 @@ public class Shade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (KeyAttach.RetrurnKey("A") || demoended)
+        if (demoended)
         {
             StartCoroutine(StartLoad());
+        }
+        if (KeyAttach.RetrurnKey("A"))
+        {
+            StartCoroutine (PushStart());
         }
     }
     IEnumerator StartLoad()
@@ -32,8 +36,23 @@ public class Shade : MonoBehaviour
         }
         else 
         {
-            SceneManager.LoadScene("LogoScene");
+            SceneManager.LoadScene("HighScoreScene");
         }
 
+    }
+    IEnumerator PushStart()
+    {
+        {
+            Animator.SetBool("Shading", true);
+            yield return new WaitForSeconds(1);
+        }
+        if (StaticList.ingame)
+        {
+            SceneManager.LoadScene("MainScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 }
