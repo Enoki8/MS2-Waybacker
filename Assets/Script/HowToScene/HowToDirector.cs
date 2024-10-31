@@ -8,19 +8,11 @@ public class HowToDirector : MonoBehaviour
     [SerializeField] List<GameObject> HowToObject;
     [SerializeField] Shade Shading;
 
-    [SerializeField] GameObject Ahajimeru;
     [SerializeField] GameObject PushA;
     // Start is called before the first frame update
     void Start()
     {
-        if (StaticList.ingame)
-        {
-            Ahajimeru.SetActive(true);
-        }
-        else
-        {
             PushA.SetActive(true);
-        }
         StartCoroutine(StartHowto());
     }
 

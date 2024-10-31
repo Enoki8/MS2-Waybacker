@@ -12,6 +12,7 @@ public class ShadeHighScore : MonoBehaviour
     void Start()
     {
         StaticList.ingame = false;
+        StaticNumberStore.thisgamescore = 0;
         StartCoroutine(SceneChange());
     }
 
