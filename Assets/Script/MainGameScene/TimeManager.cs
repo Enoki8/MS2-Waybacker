@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEngine;
-public class  TimeManager : MonoBehaviour
+﻿using UnityEngine;
+public class TimeManager : MonoBehaviour
 {
     private RectTransform RectTransform;
 
@@ -16,7 +13,8 @@ public class  TimeManager : MonoBehaviour
     [SerializeField] GameObject Bar_1;
     [SerializeField] UIViewer UIViewer;
     [SerializeField] Director Director;
-    
+    [SerializeField] ScoreManager ScoreManager;
+
     void Start()
     {
         static_time = time;
@@ -29,9 +27,10 @@ public class  TimeManager : MonoBehaviour
         //秒数を増やすところ
         if (time > 0)
         {
-            time -= Time.deltaTime;
+            float thistime = Mathf.Min(4,((1 + (ScoreManager.GameSteps) * 0.01f)));
+            time -= Time.deltaTime * thistime;
             Vector2 pos = transform.position;
-            float newpos = (float)((Time.deltaTime) * 10/static_time);
+            float newpos = (float)((Time.deltaTime * thistime) * 10 / static_time);
             pos.y -= newpos;
             transform.position = pos;
         }
@@ -51,11 +50,11 @@ public class  TimeManager : MonoBehaviour
 
         //Debug.Log($"{addition_time}Time_Addition!!!!");
         time += addition_time;
-        if (time > static_time) 
+        if (time > static_time)
         {
             time = static_time;
         }
-        aftertime = (float)time-beforetime;
+        aftertime = (float)time - beforetime;
         Vector2 pos = transform.position;
         float newpos = (float)((aftertime) * 10 / static_time);
         pos.y += newpos;

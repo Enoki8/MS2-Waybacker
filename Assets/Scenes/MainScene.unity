@@ -506,9 +506,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.15578634
     width: 1
-    height: 1
+    height: 0.6884273
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1237,6 +1237,7 @@ MonoBehaviour:
   Bar_1: {fileID: 1267342117}
   UIViewer: {fileID: 1557883920}
   Director: {fileID: 166847001}
+  ScoreManager: {fileID: 986934356}
 --- !u!212 &1049746637
 SpriteRenderer:
   m_ObjectHideFlags: 0
