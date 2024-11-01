@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class CreateBlock : MonoBehaviour
 {
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] TimeManager timeManager;
     [SerializeField] Director director;
 
     [SerializeField] GameObject sand;
@@ -16,7 +16,7 @@ public class CreateBlock : MonoBehaviour
     public Sprite bomb;
     public Sprite nullblock;
     public Sprite null2;
-    
+
     [SerializeField] private int baseChance;
     [SerializeField] private int afterChance;
     [SerializeField] private int worstChance;
@@ -41,36 +41,51 @@ public class CreateBlock : MonoBehaviour
 
     //    Debug.Log($"gridcount:{Grid.Count} bombgrid:{BombGrid.Count}");
     //}
-    public void Destroyblock(int column, int row)//ブロック壊す
+    public bool Destroyblock(int column, int row)//ブロック壊す
     {
-        if (boolsGrid[column][row] != true)
+        SpriteRenderer spr;
+        spr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+        if (spr.sprite.name != "Flag")
         {
-            boolsGrid[column][row] = true;
-            int zokusei = BombGrid[column][row];
-            //Debug.Log($"zokusei:{zokusei}");
-            if (zokusei == 0)
+            if (boolsGrid[column][row] != true)
             {
-                Destroy(Grid[column - destroycolumn][row]);
-                //SpriteRenderer sr;
-                //sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-                //sr.sprite = n;
-            }
-            else
-            {
-                //Debug.Log("画像変更");
-                SpriteRenderer sr;
-                sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
-                if (zokusei == -1)
+                boolsGrid[column][row] = true;
+                int zokusei = BombGrid[column][row];
+                //Debug.Log($"zokusei:{zokusei}");
+                if (zokusei == 0)
                 {
-                    sr.sprite = bomb;
-                    director.getgameover = true;
+                    Destroy(Grid[column - destroycolumn][row]);
+                    //SpriteRenderer sr;
+                    //sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+                    //sr.sprite = n;
+                    return true;
                 }
                 else
                 {
-                    sr.sprite = hints[zokusei];
-                    scoreManager.ScoreUp((zokusei * zokusei) * 100);
+                    //Debug.Log("画像変更");
+                    SpriteRenderer sr;
+                    sr = Grid[column - destroycolumn][row].GetComponent<SpriteRenderer>();
+                    if (zokusei == -1)
+                    {
+                        sr.sprite = bomb;
+                        director.getgameover = true;
+                    }
+                    else
+                    {
+                        sr.sprite = hints[zokusei];
+                        scoreManager.ScoreUp((zokusei * zokusei) * 100);
+                    }
+                    return true;
                 }
             }
+            else
+            {
+                return false;
+            }
+        }
+        else 
+        {
+            return false;
         }
 
     }
@@ -181,7 +196,7 @@ public class CreateBlock : MonoBehaviour
                 }
                 else
                 {
-                    afterChance = Mathf.Max(worstChance,(int)(baseChance - (((30 + scoreManager.GameSteps) / 30)) + 1));
+                    afterChance = Mathf.Max(worstChance, (int)(baseChance - (((30 + scoreManager.GameSteps) / 30)) + 1));
                     rnd = Random.Range(0, afterChance);
 
                 }
@@ -191,10 +206,10 @@ public class CreateBlock : MonoBehaviour
                     BombGrid[column][row] = -1;
                     beforebomb = true;
                     createdbomb++;
-                    if (createdbomb > 6+Random.Range(0,3))
+                    if (createdbomb > 6 + Random.Range(0, 3))
                     {
                         createdbomb = 0;
-                        waitedtime = 11+Random.Range(0,10);
+                        waitedtime = 11 + Random.Range(0, 10);
                     }
                     //AroundSand(column, row);
                 }

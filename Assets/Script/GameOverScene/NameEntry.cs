@@ -17,12 +17,6 @@ public class NameEntry : MonoBehaviour
     {
         choosing = 0;
         ViewAlps(Posset());
-        for (int i = 0; i < 5; i++)
-        {
-            Debug.Log(StaticNumberStore.hiscores[i]);
-        }
-        Debug.Log(StaticNumberStore.thisgamescore);
-
     }
 
     // Update is called once per frame

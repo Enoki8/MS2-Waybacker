@@ -48,16 +48,19 @@ public class NewPlayerController : MonoBehaviour
                     {
                         Walking(thisflame);
                         Destroyblock = PlayerGridCheck(thisflame);
-                        if (Destroyblock != null)
+                        if (Destroyblock != null && Destroyblock[0]!=-1 && Destroyblock[0]!=10)
                         {
                             if (createblock.boolsGrid[Destroyblock[1]][Destroyblock[0]] != true)
                             {
                                 if (KeyAttach.RetrurnKey("A"))
                                 {
                                     //Debug.Log($"Locate0:{Destroyblock[1]} Locate1:{Destroyblock[0]}");
-                                    createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
-                                    timeManager.Time_Additioner(2);
+                                    bool destroyed=createblock.Destroyblock(Destroyblock[1], Destroyblock[0]);
+                                    if (destroyed)
+                                    {
+                                        timeManager.Time_Additioner(2);
 
+                                    }
                                     downslide = 1;
                                     stopflame = stopflameset;
 
