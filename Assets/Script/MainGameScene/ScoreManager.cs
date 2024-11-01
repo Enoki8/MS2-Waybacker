@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -10,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] UIViewer viewer;
 
     [SerializeField] GameObject SCORE;
-    public static int GameScore=0;
+    public static int GameScore;
     public List<GameObject> ScoreNumList;
 
     public int GameSteps;
@@ -23,6 +22,8 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StaticNumberStore.thisgamescore = 0;
+        GameScore = 0;
         //Debug.Log(NumSpriteList.Count);
         SetStartSprict();
         StepsReview();

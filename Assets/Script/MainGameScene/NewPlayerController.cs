@@ -18,8 +18,8 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] int[] Destroyblock;
 
     private float downslide;
-    private int stopflame;
-    [SerializeField] int stopflameset;
+    [SerializeField] private float stopflame;
+    [SerializeField] float stopflameset;
 
     public int uplimit;
 
@@ -85,9 +85,9 @@ public class NewPlayerController : MonoBehaviour
         else
         {
 
-            if (stopflame != 0)
+            if (stopflame >= 0)
             {
-                stopflame--;
+                stopflame-=Time.deltaTime;
             }
             else
             {
