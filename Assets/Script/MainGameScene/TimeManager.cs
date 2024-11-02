@@ -14,6 +14,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] UIViewer UIViewer;
     [SerializeField] Director Director;
     [SerializeField] ScoreManager ScoreManager;
+    [SerializeField] StartWaiting startWaiting;
 
     void Start()
     {
@@ -24,24 +25,29 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        //秒数を増やすところ
-        if (time > 0)
+        if (startWaiting.isstarted)
         {
-            float thistime = Mathf.Min(4,((1 + (ScoreManager.GameSteps) * 0.01f)));
-            time -= Time.deltaTime * thistime;
-            Vector2 pos = transform.position;
-            float newpos = (float)((Time.deltaTime * thistime) * 10 / static_time);
-            pos.y -= newpos;
-            transform.position = pos;
-        }
-        else
-        {
-            if (!Director.getgameover)
+
+            //秒数を増やすところ
+            if (time > 0)
             {
-                Debug.Log("おわり");
-                Director.getgameover = true;
+                float thistime = Mathf.Min(4, ((1 + (ScoreManager.GameSteps) * 0.01f)));
+                time -= Time.deltaTime * thistime;
+                Vector2 pos = transform.position;
+                float newpos = (float)((Time.deltaTime * thistime) * 10 / static_time);
+                pos.y -= newpos;
+                transform.position = pos;
+            }
+            else
+            {
+                if (!Director.getgameover)
+                {
+                    Debug.Log("おわり");
+                    Director.getgameover = true;
+                }
             }
         }
+
     }
     //秒数を増やす処理
     public void Time_Additioner(int addition_time)

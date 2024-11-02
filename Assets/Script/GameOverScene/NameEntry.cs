@@ -9,6 +9,7 @@ public class NameEntry : MonoBehaviour
     [SerializeField] KeyAttach KeyAttach;
     [SerializeField] FontStore FontStore;
     [SerializeField] GameObject NamaeIrete;
+    [SerializeField] ResetNameEntry ResetNameEntry;
     [SerializeField] int position = 0;
     private int choosing;
     private bool EndCheck = false;
@@ -24,6 +25,16 @@ public class NameEntry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!ResetNameEntry.TimeOver)
+        {
+            entryname[0] = 8;
+            entryname[1] = 6;
+            entryname[2] = 2;
+            SetRankingName();
+            EndCheck = true;
+            SceneManager.LoadScene("HighScoreScene");
+
+        }
         if (entryname[2] == -1)
         {
             int button = KeyAttach.Pushed();
@@ -105,7 +116,6 @@ public class NameEntry : MonoBehaviour
             pos.x += 1f;
             Alps[i].transform.position = pos;
         }
-
     }
     public GameObject Clone(GameObject obj)
     {

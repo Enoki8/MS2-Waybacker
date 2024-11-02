@@ -40,6 +40,7 @@ public class GameOverDirector : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
+
         for (int i = createBlock.Grid.Count - 1; i > 0; i--)
         {
             List<GameObject> grids = createBlock.Grid[i];

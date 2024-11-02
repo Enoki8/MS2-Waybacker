@@ -6,6 +6,7 @@ public class StartWaiting : MonoBehaviour
 {
     [SerializeField] NewPlayerController controller;
     [SerializeField] List<GameObject> Starts;
+    [SerializeField] public bool isstarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +17,12 @@ public class StartWaiting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     IEnumerator StartWait()
     {
         yield return new WaitForSeconds(1.5f);
-        foreach (GameObject go in Starts) 
+        foreach (GameObject go in Starts)
         {
             SmoothDamp smoothDamp = go.GetComponent<SmoothDamp>();
             smoothDamp.enabled = false;
@@ -31,9 +32,10 @@ public class StartWaiting : MonoBehaviour
         controller.enabled = true;
         yield return new WaitForSeconds(1);
 
-        foreach(GameObject go in Starts) 
+        foreach (GameObject go in Starts)
         {
             Destroy(go);
         }
+        isstarted = true;
     }
 }
