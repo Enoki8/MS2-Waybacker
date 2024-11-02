@@ -12,7 +12,7 @@ public class ScoreSet : MonoBehaviour
     [SerializeField] ViewThankyou ViewThankyou;
     [SerializeField] ViewRankin ViewRankin;
     [SerializeField] GameObject NameEntry;
-    [SerializeField] GameObject NamaeIrete;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +62,6 @@ public class ScoreSet : MonoBehaviour
         }
         IEnumerator PutYourName()
         {
-            NamaeIrete.SetActive(true);
             ViewRankin.SetChildrenActive(true);
             yield return new WaitForSeconds(3f);
             ViewRankin.SetChildrenActive(false);

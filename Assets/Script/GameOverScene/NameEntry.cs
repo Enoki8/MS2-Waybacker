@@ -8,6 +8,7 @@ public class NameEntry : MonoBehaviour
     [SerializeField] List<GameObject> Alps;
     [SerializeField] KeyAttach KeyAttach;
     [SerializeField] FontStore FontStore;
+    [SerializeField] GameObject NamaeIrete;
     [SerializeField] int position = 0;
     private int choosing;
     private bool EndCheck = false;
@@ -15,6 +16,7 @@ public class NameEntry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NamaeIrete.SetActive(true);
         choosing = 0;
         ViewAlps(Posset());
     }
@@ -137,6 +139,7 @@ public class NameEntry : MonoBehaviour
 
     IEnumerator EndGame()
     {
+        NamaeIrete.SetActive(false);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("HighScoreScene");
     }

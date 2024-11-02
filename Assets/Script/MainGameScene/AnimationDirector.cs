@@ -70,7 +70,6 @@ public class AnimationDirector : MonoBehaviour
         animator.SetBool("Right", false);
         animator.SetBool("Up", false);
         animator.SetBool("Down", false);
-        animator.SetBool("Push", true);
         animator.SetBool("Falling", true);
     }
 }
