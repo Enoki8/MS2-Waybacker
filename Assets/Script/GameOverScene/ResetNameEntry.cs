@@ -15,7 +15,6 @@ public class ResetNameEntry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(waitingmane);
         waitingmane += Time.deltaTime;
         if (waitingmane > 30)
         {

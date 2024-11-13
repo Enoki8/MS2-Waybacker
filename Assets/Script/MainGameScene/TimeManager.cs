@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
             //秒数を増やすところ
             if (time > 0)
             {
-                float thistime = Mathf.Min(4, ((1 + (ScoreManager.GameSteps) * 0.01f)));
+                float thistime = Mathf.Min(4, ((1 + (ScoreManager.GameSteps) * 0.015f)));
                 time -= Time.deltaTime * thistime;
                 Vector2 pos = transform.position;
                 float newpos = (float)((Time.deltaTime * thistime) * 10 / static_time);

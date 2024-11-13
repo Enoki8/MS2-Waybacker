@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using unityroom.Api;
 
 
 public class GameOverDirector : MonoBehaviour
@@ -64,6 +65,7 @@ public class GameOverDirector : MonoBehaviour
         SpriteRenderer spriteRenderer = Gameover.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
         StaticNumberStore.thisgamescore = ScoreManager.GameScore;
+        UnityroomApiClient.Instance.SendScore(1, ScoreManager.GameScore, ScoreboardWriteMode.HighScoreAsc);
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("GameOverScene");
     }

@@ -12,7 +12,11 @@ public class HowToDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!StaticList.ingame)
+        {
             PushA.SetActive(true);
+
+        }
         StartCoroutine(StartHowto());
     }
 

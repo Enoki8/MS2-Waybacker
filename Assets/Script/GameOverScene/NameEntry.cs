@@ -27,9 +27,9 @@ public class NameEntry : MonoBehaviour
     {
         if (!ResetNameEntry.TimeOver)
         {
-            entryname[0] = 8;
-            entryname[1] = 6;
-            entryname[2] = 2;
+            entryname[0] = 0;
+            entryname[1] = 0;
+            entryname[2] = 0;
             SetRankingName();
             EndCheck = true;
             SceneManager.LoadScene("HighScoreScene");
@@ -89,11 +89,11 @@ public class NameEntry : MonoBehaviour
     {
         if (num < 0)
         {
-            num = 26 + (num + 1);
+            num = 25 + (num + 1);
         }
-        else if (num > 26)
+        else if (num > 25)
         {
-            num = 0 + (num - 27);
+            num = 0 + (num - 26);
         }
         return num;
     }
